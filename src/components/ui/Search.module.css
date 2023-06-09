@@ -1,0 +1,7 @@
+.search input{
+    width: 900px;
+    max-width: 370px;
+    border-radius: 6px;
+    padding: 0.5rem 2.5rem;
+    font: inherit;
+}
