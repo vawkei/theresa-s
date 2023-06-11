@@ -21,3 +21,27 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+
+{/* MOBILE-HEAD STARTS HERE   */}
+      {/* <div className={classes["mobile-head-main"]}>
+        <div  className={classes["mobile-head"]}>
+          <h4>
+            <Link to={"/"}>Theresa's</Link>
+          </h4>
+
+          <ul>
+            <a href="">Hi Lipps!</a>
+            {cart}
+            <DrawerToggleButton toggleHandler={toggleHandler} />
+          </ul>
+        </div>
+        <Search
+          value={search}
+          onChange={searchChangeHandler}
+          placeholder={"Search products, brands and categories"}
+          className={classes.search}
+        />
+      </div> */}
+      {/* MOBILE-HEAD ENDS HERE   */}

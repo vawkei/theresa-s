@@ -3,13 +3,20 @@ import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import Search from "../ui/Search";
 import { useState } from "react";
+import DrawerToggleButton from "../ui/DrawerToggleButton";
 
 const MainNavigation = () => {
+  const [search, setSearch] = useState("");
+  const [showNav, setShowNav] = useState(false);
 
-  const [search,setSearch] = useState('');
-
-  const searchChangeHandler = (e)=>{
-    setSearch(e.target.value)
+  const searchChangeHandler = (e) => {
+    setSearch(e.target.value);
+  };
+  const toggleHandler = () => {
+    setShowNav((prev) => !prev);
+  };
+  const hideNavHandler = () => {
+    setShowNav(false);
   };
 
   const logo = (
@@ -22,7 +29,7 @@ const MainNavigation = () => {
 
   const cart = (
     <div className={classes.cart}>
-      <Link to={'/cart'}>
+      <Link to={"/cart"}>
         {" "}
         <p>Cart</p>
         <FaShoppingCart size={20} />
@@ -34,12 +41,30 @@ const MainNavigation = () => {
   return (
     <div className={classes.header}>
       <header>{logo}</header>
-        
-        <Search value={search} onChange={searchChangeHandler} placeholder={"Search products, brands and categories"} />
-       
-        <a href="">Hi Lipps!</a>
-      <nav>
-        <ul>
+      <span className={classes.search}>
+        <Search
+          value={search}
+          onChange={searchChangeHandler}
+          placeholder={"Search products, brands and categories"}
+        />
+      </span>
+
+      <a href="">Hi Lipps!</a>
+
+      <nav
+        className={
+          showNav?`${classes['show-navigation']}` : `${classes['hide-navigation']}`
+        }>
+  
+        <div
+          className={
+            showNav
+              ? `${classes["nav-backdrop"]} ${classes["show-nav-backdrop"]}`
+              : ''
+          }
+          onClick={hideNavHandler}></div>
+
+        <ul onClick={hideNavHandler}>
           <li>
             <Link to={"/contact"}>Contact</Link>
           </li>
@@ -52,9 +77,13 @@ const MainNavigation = () => {
           <li>
             <a href="">Logout</a>
           </li>
+          <span className={classes.spanCart}>{cart}</span>
         </ul>
-        {cart}
       </nav>
+      <div className={classes["mobile-icon"]}>
+        {cart}
+        <DrawerToggleButton toggleHandler={toggleHandler} />
+      </div>
     </div>
   );
 };

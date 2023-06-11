@@ -1,0 +1,14 @@
+.button {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+}
+.toggleLine{
+    width: 20px;
+    height:1px;
+    background-color: black;
+}
