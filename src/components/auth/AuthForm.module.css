@@ -1,0 +1,114 @@
+h1{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.auth{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 3rem;
+   
+}
+
+
+.control{
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+.control label{
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+.control input{
+    display: block;
+    font: inherit;
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+.action{
+    text-align: center;
+}
+.toggle{
+    text-align: center;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+.toggle:hover{
+    color: #ccc;
+}
+.google{
+    width: 100%;
+    color: white;
+    background-color: black;
+    padding: 0.5rem;
+    margin-top: 1rem;
+}
+.google span{
+    color: red;
+}
+.cardClass{
+    width: 30rem;
+    max-width: 30rem;
+    margin-top: 0rem;
+    /* ANIMATION */
+    animation-name: slideIn2;
+    animation-duration: 5s;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+}
+.image img{
+    animation-name: slideIn;
+    animation-duration: 5s;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+}
+
+.passwordToggle{
+    position: absolute;
+    top: 53%;
+    right: 4%;
+}
+
+@keyframes slideIn {
+    from{transform:translateX(-200px) }
+    to{transform:translateX(0px) }
+}
+@keyframes slideIn2{
+    from{transform: translateX(200px)}
+    to{transform: translateX(0px)}
+}
+
+
+
+/* MEDIA QUERY START HERE */
+@media screen and (max-width:700px){
+    .image{
+        display: none;
+    }
+    .cardClass{
+        width: 30rem;
+        max-width: 30rem;
+        margin-top: 0rem;
+        animation: none;
+    }
+    
+    .auth{
+        text-align: center;
+        margin: 3rem auto;
+        width: 95%;
+        max-width: 25%;
+    }
+    .control input{
+        width: 80%;
+        margin: 0 auto;
+    }
+    .passwordToggle{
+        position: absolute;
+        top: 53%;
+        right: 13%;
+    }
+}
