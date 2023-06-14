@@ -1,0 +1,41 @@
+.modal{
+    background-color: white;
+    z-index: 300;
+    width: 20rem;
+    position: fixed;
+    top: 10%;
+    left: 0;
+}
+.modal header{
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 0.5rem;
+}
+.modal p{
+text-align: center;
+/* background-color: green;
+color: white; */
+padding: 1rem;    
+}
+
+
+
+@media screen and (max-width:700px){
+    .modal{
+        background-color: white;
+        z-index: 300;
+        width: 10rem;
+        position: fixed;
+        top: 10%;
+        left: 0;
+        animation-name: slideAcross;
+        animation-duration: 20s;
+        animation-delay: 0s;
+        animation-fill-mode: forwards;
+    }
+    @keyframes slideAcross {
+        from{transform: translateX(-200px)}
+        to{transform: translateX(1800px);}
+    }   
+}

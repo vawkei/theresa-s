@@ -21,7 +21,7 @@ const Slider = () => {
   }, []);
 
   let slideInterval;
-  let timeInterval = 5000;
+  let timeInterval = 2000;
 
   function auto() {
     slideInterval = setInterval(nextSlide, timeInterval);
