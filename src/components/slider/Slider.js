@@ -3,7 +3,7 @@ import { useState, useEffect, Fragment } from "react";
 import { SliderData } from "./SliderData";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import Button from "../ui/Button";
+import Button from "../ui/button/Button";
 
 const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);

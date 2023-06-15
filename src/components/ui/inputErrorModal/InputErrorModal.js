@@ -1,4 +1,4 @@
-import Button from "./Button";
+import Button from "../button/Button";
 import classes from "./InputErrorModal.module.css";
 
 const InputErrorModal = (props) => {
