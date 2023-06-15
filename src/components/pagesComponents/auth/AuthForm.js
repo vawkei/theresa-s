@@ -1,19 +1,22 @@
 import classes from "./AuthForm.module.css";
-import Loader from "../ui/Loader";
-import registerImage from "../../assets/veeshopregister.jpg";
-import signInImage from "../../assets/veeshopsignin.jpg";
+import Loader from "../../ui/loader/Loader";
+import registerImage from "../../../assets/veeshopregister.jpg";
+import signInImage from "../../../assets/veeshopsignin.jpg";
 import { useState, useEffect } from "react";
-import Button from "../ui/Button";
-import Card from "../ui/Card";
+import Button from "../../ui/button/Button";
+import Card from "../../ui/card/Card";
 import { FcGoogle } from "react-icons/fc";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
-import { auth } from "../../firebase/Config";
-import InputErrorModal from "../ui/InputErrorModal";
+
+import { auth } from "../../../firebase/Config";
+import InputErrorModal from "../../ui/inputErrorModal/InputErrorModal";
 import { useNavigate } from "react-router-dom";
-import Notifier from "../ui/Notifier";
+import Notifier from "../../ui/notifier/Notifier";
 import { AiOutlineEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
 
@@ -160,6 +163,31 @@ const AuthForm = () => {
     }
   };
 
+  //SIGNIN WITH GOOGLE LOGIC:
+
+  const provider = new GoogleAuthProvider();
+
+  const signInWithGoogleHandler = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // The signed-in user info.
+        const user = result.user;
+        console.log(user);
+        setIsLoading(false);
+        navigate('/',{replace:true})
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        setIsLoading(false);
+      });
+  };
+
   return (
     <div>
       {notifier && (
@@ -248,7 +276,9 @@ const AuthForm = () => {
                 )}
               </div>
               {!toRegister && (
-                <button className={classes.google}>
+                <button
+                  className={classes.google}
+                  onClick={signInWithGoogleHandler}>
                   <FcGoogle size={18} /> Login with <span>Google</span>{" "}
                 </button>
               )}

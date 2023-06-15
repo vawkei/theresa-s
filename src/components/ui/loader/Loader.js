@@ -1,6 +1,7 @@
 import  ReactDOM  from 'react-dom';
 import classes from './Loader.module.css';
-import loadingImage from "../../assets/veeshoploading.gif";
+import loadingImage from "../../../assets/veeshoploading.gif";
+
 
 const Loader = () => {
     

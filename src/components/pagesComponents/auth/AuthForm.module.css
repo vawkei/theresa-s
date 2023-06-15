@@ -46,10 +46,13 @@ h1{
     background-color: black;
     padding: 0.5rem;
     margin-top: 1rem;
+    cursor: pointer;
 }
+
 .google span{
     color: red;
 }
+
 .cardClass{
     width: 30rem;
     max-width: 30rem;

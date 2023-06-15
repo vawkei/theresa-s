@@ -1,15 +1,15 @@
 import classes from "./MainNavigation.module.css";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
-import Search from "../ui/Search";
+import Search from "../ui/search/Search";
 import { useState, useEffect } from "react";
-import DrawerToggleButton from "../ui/DrawerToggleButton";
+import DrawerToggleButton from "../ui/drawerToggleButton/DrawerToggleButton";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { authActions } from "../../store";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { auth } from "../../firebase/Config";
-import InputErrorModal from "../ui/InputErrorModal";
-import Notifier from "../ui/Notifier";
+import InputErrorModal from "../ui/inputErrorModal/InputErrorModal";
+import Notifier from "../ui/notifier/Notifier";
 
 const MainNavigation = () => {
   const [search, setSearch] = useState("");
@@ -19,6 +19,7 @@ const MainNavigation = () => {
   const [inputErrorModal, setInputErrorModal] = useState("");
 
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state)=>state.auth.isLoggedIn);
 
   const searchChangeHandler = (e) => {
     setSearch(e.target.value);
@@ -67,8 +68,10 @@ const MainNavigation = () => {
           //console.log(phase4)
 
           setDisplayName(phase4);
-        }
-
+        }else{
+          setDisplayName(user.displayName);
+        };
+        
         dispatch(
           authActions.SET_ACTIVE_USER({
             userName: user.displayName ? displayName : user.displayName,
@@ -164,15 +167,23 @@ const MainNavigation = () => {
           <li>
             <Link to={"/contact"}>Contact</Link>
           </li>
-          <li>
+          
+           <li>
             <Link to={"/register"}>Register</Link>
           </li>
-          <li>
+
+          {isLoggedIn &&<li>
+            <Link to={"/profile"}>Profile</Link>
+          </li>}
+
+          {isLoggedIn && <li>
             <Link to={"/orders"}>Orders</Link>
-          </li>
-          <li>
+          </li>}
+
+          {isLoggedIn && <li>
             <Link href="/" onClick={LogOutUserHandler}>Logout</Link>
-          </li>
+          </li>}
+          
           <span className={classes.spanCart}>{cart}</span>
         </ul>
       </nav>
