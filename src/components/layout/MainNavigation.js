@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { auth } from "../../firebase/Config";
 import InputErrorModal from "../ui/inputErrorModal/InputErrorModal";
 import Notifier from "../ui/notifier/Notifier";
+import { AdminOnlyLink } from "../adminOnlyRoute/AdminOnlyRoute";
 
 const MainNavigation = () => {
   const [search, setSearch] = useState("");
@@ -19,7 +20,7 @@ const MainNavigation = () => {
   const [inputErrorModal, setInputErrorModal] = useState("");
 
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector((state)=>state.auth.isLoggedIn);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   const searchChangeHandler = (e) => {
     setSearch(e.target.value);
@@ -50,9 +51,6 @@ const MainNavigation = () => {
     </div>
   );
 
-
-
-
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -68,26 +66,24 @@ const MainNavigation = () => {
           //console.log(phase4)
 
           setDisplayName(phase4);
-        }else{
+        } else {
           setDisplayName(user.displayName);
-        };
-        
+        }
+
         dispatch(
           authActions.SET_ACTIVE_USER({
-            userName: user.displayName ? displayName : user.displayName,
+            userName: user.displayName ? user.displayName : displayName,
             userID: user.uid,
             userEmail: user.email,
           })
         );
       } else {
         // User is signed out
-        setDisplayName('')
-        dispatch(authActions.CLEAR_ACTIVE_USER())
+        setDisplayName("");
+        dispatch(authActions.CLEAR_ACTIVE_USER());
       }
     });
-
-
-  }, []);
+  }, [displayName]);
 
   let timeInterval = 3000;
   let notifierClearer;
@@ -97,34 +93,33 @@ const MainNavigation = () => {
       notifierClearer = setInterval(function () {
         setNotifier("");
       }, timeInterval);
-      return ()=>{
-        clearInterval(notifierClearer)
-      }
+      return () => {
+        clearInterval(notifierClearer);
+      };
     }
   }, [notifier]);
 
-
-  const LogOutUserHandler = ()=>{
+  const LogOutUserHandler = () => {
     signOut(auth)
-    .then(() => {
-      setNotifier({
-        title: "LogOut",
-        message: "LogOut Successful",
+      .then(() => {
+        setNotifier({
+          title: "LogOut",
+          message: "LogOut Successful",
+        });
+        //console.log('Logout successful')
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        let x = errorMessage.split(":");
+        let x2 = x[1];
+        setInputErrorModal({
+          title: "Console Error",
+          message: x2,
+          //this shows connection error when we want to Logout from the app. We get it from our console.
+        });
       });
-      //console.log('Logout successful')
-    })
-    .catch((error) => {
-      const errorMessage = error.message;
-      console.log(errorMessage);
-      let x = errorMessage.split(":");
-      let x2 = x[1];
-      setInputErrorModal({
-        title: "Console Error",
-        message: x2,
-        //this shows connection error when we want to Logout from the app. We get it from our console.
-      });
-    });
-  }
+  };
 
   return (
     <div className={classes.header}>
@@ -164,26 +159,40 @@ const MainNavigation = () => {
           onClick={hideNavHandler}></div>
 
         <ul onClick={hideNavHandler}>
+          
+          <AdminOnlyLink>
+            <li className={classes.admin}>
+              <Link to={'/admin/home'}>Admin</Link>
+            </li>
+          </AdminOnlyLink>
           <li>
             <Link to={"/contact"}>Contact</Link>
           </li>
-          
-           <li>
+
+          <li>
             <Link to={"/register"}>Register</Link>
           </li>
 
-          {isLoggedIn &&<li>
-            <Link to={"/profile"}>Profile</Link>
-          </li>}
+          {isLoggedIn && (
+            <li>
+              <Link to={"/profile"}>Profile</Link>
+            </li>
+          )}
 
-          {isLoggedIn && <li>
-            <Link to={"/orders"}>Orders</Link>
-          </li>}
+          {isLoggedIn && (
+            <li>
+              <Link to={"/orders"}>Orders</Link>
+            </li>
+          )}
 
-          {isLoggedIn && <li>
-            <Link href="/" onClick={LogOutUserHandler}>Logout</Link>
-          </li>}
-          
+          {isLoggedIn && (
+            <li>
+              <Link href="/" onClick={LogOutUserHandler}>
+                Logout
+              </Link>
+            </li>
+          )}
+
           <span className={classes.spanCart}>{cart}</span>
         </ul>
       </nav>

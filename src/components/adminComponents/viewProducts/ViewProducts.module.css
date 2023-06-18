@@ -1,0 +1,38 @@
+.table{
+    padding: 1rem;
+    width: 100%;
+}
+section div{
+    margin: 1rem 0rem;
+}
+section p{
+    margin: 1rem 0;
+    color: brown;
+}
+
+table{
+    font-size: 1.4rem;
+    border-collapse: collapse;
+    width: 100%;
+    animation-name: slideUp;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideUp {
+    from{transform:translateY(200px) }
+    to{transform:translateY(0px) }
+}
+.table th{
+    padding: 1rem;
+    border: 2px solid black;
+}
+th,td{
+    /* vertical-align: top; this pushes the words to the top of the cell from the middle*/
+    text-align: left;
+}
+.table tbody td{
+    padding: 1.5rem;
+    border: 2px solid black;
+}
+

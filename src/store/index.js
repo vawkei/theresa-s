@@ -16,6 +16,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         console.log(state.isLoggedIn)
         state.userName = action.payload.userName;
+        console.log(state.userName);
         state.userID = action.payload.userID;
         state.userEmail = action.payload.userEmail
       },
