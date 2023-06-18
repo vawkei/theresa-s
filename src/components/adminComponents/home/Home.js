@@ -1,10 +1,9 @@
- import Slider from "../../slider/Slider";
-
+import classes from './Home.module.css';
 
 const Home = () => {
     return ( 
         <div>
-           <Slider /> 
+            <h2>Admin HomePage Dashboard</h2>
         </div>
      );
 }
