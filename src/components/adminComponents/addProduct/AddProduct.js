@@ -6,6 +6,8 @@ import { db, storage } from "../../../firebase/Config";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import Loader from "../../ui/loader/Loader";
 import { Timestamp, addDoc, collection } from "firebase/firestore";
+import {useNavigate} from 'react-router-dom'
+
 
 const category = [
   { id: "1", name: "Electronics" },
@@ -13,6 +15,7 @@ const category = [
   { id: "3", name: "Fashion" },
   { id: "4", name: "Phone" },
 ];
+
 
 const AddProduct = () => {
   const [product, setProduct] = useState({
@@ -25,6 +28,8 @@ const AddProduct = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
+
+  const navigate = useNavigate();
 
   const handleInputHandler = (e) => {
     const { name, value } = e.target;
@@ -84,6 +89,7 @@ const AddProduct = () => {
       brand: '',
       desc: '',
     })
+    navigate('/admin/view-products')
   }
 
   return (
