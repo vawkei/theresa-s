@@ -6,7 +6,9 @@ import { TbFileInvoice } from "react-icons/tb";
 import { IoIosAdd } from "react-icons/io";
 import { GrOverview } from "react-icons/gr";
 
+
 const NavBar = () => {
+  
   const userName = useSelector((state) => state.auth.userName);
 
   return (
@@ -18,24 +20,25 @@ const NavBar = () => {
         <ul>
           <li>
             <Link to={"/admin/home"}>
-              <FaHome size={20} />
+              <FaHome size={30} />
             </Link>
           </li>
           <li>
             <Link to={"/admin/view-products"}>
-              <GrOverview size={20} />
+              <GrOverview size={30} />
             </Link>
           </li>
           <li>
             <Link to={"/admin/add-product"}>
-              <IoIosAdd size={20} />
+              <IoIosAdd size={30} />
             </Link>
           </li>
           <li>
             <Link to={"/admin/orders"}>
-              <TbFileInvoice size={20} />
+              <TbFileInvoice size={30} />
             </Link>
           </li>
+          
         </ul>
       </nav>
     </div>
