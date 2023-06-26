@@ -2,13 +2,13 @@
     border-radius: 6px ;
     background-color: black;
     color: white;
-    width: 8rem;
+    width: 10rem;
     padding: 0.25rem 2rem;
     margin-top: 2rem;
 }
 
 .button:hover{
-    background-color: red;
+    background-color: white;
     color: black;
     cursor: pointer;
 }

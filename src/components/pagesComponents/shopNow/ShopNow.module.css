@@ -1,0 +1,11 @@
+.shop{
+    display: flex;
+    justify-content: center;
+    
+}
+.shop aside{
+    width: 15%;
+}
+.shop div{
+    width: 85%;
+}

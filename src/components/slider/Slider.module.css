@@ -1,93 +1,93 @@
-.slider{
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+.slide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.5s ease;
+  transform: translateX(10%);
+}
+.slide > div {
+  display: flex;
+  align-items: center;
+}
+.slide img {
+  width: 65%;
+}
+
+
+.btn {
+  width: 12rem;
+}
+.btn:hover {
+  background-color: white;
+  border: none;
+  color: black;
+}
+
+.btn a {
+  color: white;
+  text-decoration: none;
+}
+.btn a:hover {
+  color: black;
+}
+
+.arr {
+  z-index: 30;
+}
+.prev {
+  position: absolute;
+  top: 4rem;
+  left: 0;
+  color: orange;
+}
+.next {
+  position: absolute;
+  top: 4rem;
+  right: 0;
+  color: green;
+}
+
+@media screen and (max-width: 700px) {
+  .slider {
     position: relative;
     width: 100%;
     height: 100vh;
-}
-.slide{
- width: 100%;
- height: 100%;  
- position: absolute;
- top: 0;
- left: 0;
- transition: all 0.5s ease;
- transform: translateX(10%); 
-
-}
-.slide > div{
-    display: flex;
-    align-items: center;
-}
-.slide img{
-    width: 65%;
-}
-   
-.shopNow a{
-    color: white;
-    text-decoration: none;
-}
-.shopNow :hover{
-    color: black;   
-}
-
-.arr{
-
-    z-index: 30;
-}
-.prev{
+  }
+  .slide {
+    width: 100%;
+    height: 100%;
     position: absolute;
-    top: 4rem;
+    top: 0;
     left: 0;
-    color: orange;
-}
-.next{
+    transition: all 0.5s ease;
+    transform: translateX(5%);
+  }
+  .slide img {
+    width: 80%;
+  }
+  .slideFirstDiv {
+    display: flex;
+    flex-direction: column;
+  }
+  .slideFirstDiv {
+    text-align: center;
+  }
+  .slideFirstDiv p {
+    text-align: left;
+    inline-size: 250px;
+    font-size: 1.5rem;
+  }
+  .next {
     position: absolute;
     top: 4rem;
-    right: 0;
+    right: 2rem;
     color: green;
+  }
 }
-
-@media screen and (max-width:700px){
-    .slider{
-        position: relative;
-        width: 100%;
-        height: 100vh;
-    }
-    .slide{
-        width: 100%;
-        height: 100%;  
-        position: absolute;
-        top: 0;
-        left: 0;
-        transition: all 0.5s ease;
-        transform: translateX(5%); 
-       
-       }
-    .slide img{
-        width: 80%;
-    }
-   .slideFirstDiv{
-        display: flex;
-        flex-direction: column;
-    }  
-    .slideFirstDiv{
-        text-align: center;
-    }
-     .slideFirstDiv p{
-        text-align: left;
-        inline-size: 250px;
-        font-size: 1.5rem;
-        
-    }
-    .next{
-        position: absolute;
-        top: 4rem;
-        right: 2rem;
-        color: green;
-    } 
-}
-
-
-
-
-
-

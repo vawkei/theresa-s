@@ -1,0 +1,67 @@
+.btn{
+width: 12rem;
+}
+.btn:hover{
+    background-color: white;
+    border: none;
+    color: black;
+}
+
+.btn a{
+    color: white;
+    text-decoration: none;
+}
+.btn a:hover{
+    color: black;
+}
+
+
+.cardClass{
+    display: flex;
+    width: 100%;   
+}
+.cardClass2{
+    width: 80%;
+}
+.content{
+    padding-left: 3rem;
+    width: 60%;
+}
+.content div{
+    margin-bottom: 2rem;
+}
+.brand{display: flex; gap: 1rem;}
+.cartBtn{
+    width: 100%;
+    padding: 0.5rem 1rem;
+    /* text-align: center; */
+}
+.cartBtn:hover{
+    background-color: white;
+    color: black;
+    border: none;
+}
+.descriptionTitle{
+    text-align: center;
+}
+.descriptionContent{
+    padding: 1rem;
+}
+
+.otherImages{
+    display: flex;
+    margin-left: 5rem;
+}
+ .counter{
+    display: flex;
+    gap: 1rem;
+    position: relative;
+} 
+.counter .btn{
+    text-align: center;
+} 
+.counter p{
+    position: absolute;
+    top: 2.2rem;
+    left: 9.7rem;
+}

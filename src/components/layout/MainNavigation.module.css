@@ -1,12 +1,16 @@
 .header {
-  background-color: white;
+  background-color:white;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 10%;
+  padding: 5rem 10%;
   width: 100%;
-  height: 8rem;
+  height: 5rem;
   position: relative;
+  top: 0;
+  position: fixed;
+  z-index: 100;
+  
 }
 
 .logo a {
@@ -22,6 +26,16 @@
   border-radius: 6px;
 }
 .admin a{
+  color: white;
+}
+
+.shop-now{
+  padding: 1rem;
+  background-color: black;
+  border-radius: 6px;
+  margin-left: 1rem;
+}
+.shop-now a{
   color: white;
 }
 

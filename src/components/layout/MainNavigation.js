@@ -12,19 +12,22 @@ import InputErrorModal from "../ui/inputErrorModal/InputErrorModal";
 import Notifier from "../ui/notifier/Notifier";
 import { AdminOnlyLink } from "../adminOnlyRoute/AdminOnlyRoute";
 
+
 const MainNavigation = () => {
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
   const [showNav, setShowNav] = useState(false);
   const [displayName, setDisplayName] = useState("");
   const [notifier, setNotifier] = useState("");
   const [inputErrorModal, setInputErrorModal] = useState("");
+  const cartTotalQty = useSelector((state)=>state.cart.cartTotalQty)
+
 
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
-  const searchChangeHandler = (e) => {
-    setSearch(e.target.value);
-  };
+  // const searchChangeHandler = (e) => {
+  //   setSearch(e.target.value);
+  // };
   const toggleHandler = () => {
     setShowNav((prev) => !prev);
   };
@@ -46,7 +49,7 @@ const MainNavigation = () => {
         {" "}
         <p>Cart</p>
         <FaShoppingCart size={20} />
-        <p>0</p>
+        <p>{cartTotalQty}</p>
       </Link>
     </div>
   );
@@ -134,13 +137,13 @@ const MainNavigation = () => {
       )}
 
       <header>{logo}</header>
-      <span className={classes.search}>
+      {/* <span className={classes.search}>
         <Search
           value={search}
           onChange={searchChangeHandler}
           placeholder={"Search products, brands and categories"}
         />
-      </span>
+      </span> */}
 
       <a href="">{displayName}</a>
 
@@ -165,6 +168,10 @@ const MainNavigation = () => {
               <Link to={'/admin/home'}>Admin</Link>
             </li>
           </AdminOnlyLink>
+
+          <li className={classes['shop-now']}>
+              <Link to={'/shop-now'}>Shop Now</Link>
+            </li>
           <li>
             <Link to={"/contact"}>Contact</Link>
           </li>

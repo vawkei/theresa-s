@@ -1,0 +1,26 @@
+.top{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 3rem;
+    margin-left: 10rem;
+    border-bottom: 1px #eee solid;
+    margin-bottom: 2rem;
+}
+
+.search{
+    text-align: right;
+    padding-bottom: 2rem;
+}
+.sort{
+    padding-bottom: 2.5rem;
+    
+}
+.sort select{
+    border: none;
+    font-size: 1.2rem;
+}
+
+
+
+
