@@ -51,11 +51,7 @@ const Slider = () => {
         return (
           <div
             key={index}
-            className={
-              index === currentSlide
-                ? `${classes.slide}`
-                : ""
-            }>
+            className={index === currentSlide ? `${classes.slide}` : ""}>
             {index === currentSlide && (
               <div className={classes.slideFirstDiv}>
                 <img src={slide.image} />
@@ -63,9 +59,9 @@ const Slider = () => {
                   <h1>{slide.heading}</h1>
                   <p>{slide.desc}</p>
 
-                  <Button className={classes.shopNow}>
-                    <a href="#product">Shop Now</a>
-                  </Button>
+                  <a href="/shop-now">
+                    <Button className={classes.btn}>Shop Now</Button>
+                  </a>
                 </div>
               </div>
             )}

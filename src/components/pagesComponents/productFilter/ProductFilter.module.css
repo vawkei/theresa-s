@@ -1,0 +1,34 @@
+.filter{
+    border-right: 1px solid #ccc;
+    padding: 1rem;
+    width: 100%;
+    /* min-height: 20px; */
+}
+.category h4{
+    padding: 1rem;
+}
+.category p{
+ margin-bottom: 2rem;
+ border-bottom: 1px solid #ccc;
+ width: 100%;
+ cursor: pointer;
+}
+.active{
+    border-right: 5px green solid;
+}
+.btn{
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+.btn button{
+    padding: 0.5rem 2rem;
+    border-radius: 6px;
+    background-color: red;
+    font-size: 0.9rem;
+
+}
+.btn button:hover{
+    background-color: white;
+    background-color: none;
+    border: none;
+}
