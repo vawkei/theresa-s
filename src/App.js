@@ -9,6 +9,7 @@ import AdminOnlyRoute from "./components/adminOnlyRoute/AdminOnlyRoute";
 import AdminPage from "./pages/AdminPage";
 import ShopNowPage from "./pages/ShopNowPage";
 import ProductDetail from "./components/pagesComponents/productDetail/ProductDetail";
+import CartPage from "./pages/CartPage";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         {/* <Route path="/shop-now/*" element={<ShopNowPage />} /> */}
         <Route path="/shop-now" element={<ShopNowPage />} />
         <Route path="/shop-now/:id" element={<ProductDetail />} />
+        <Route path="/cart-page" element={<CartPage />} />
       </Routes>
     </Layout>
   );
