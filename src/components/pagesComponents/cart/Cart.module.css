@@ -1,0 +1,60 @@
+.table-container{
+    margin-top: 2rem;
+}
+.table{
+    padding: 1rem;
+    border:2px black solid;
+}
+table{
+    padding: 1rem;
+}
+table th{
+    text-align: center;
+    padding: 1rem;
+    border-bottom: 1px black solid;
+    border-right: 1px black solid;  
+    background-color: black;
+    color: white;  
+}
+table td{
+    text-align: center;
+    padding: 1rem;
+    border-bottom: 1px black solid;
+    border-right: 1px black solid;
+}
+
+.counter{
+    display: flex;
+    align-items: center;
+    gap: 1rem; 
+    position: relative;
+} 
+.counter .btn{
+    text-align: center;
+    width: 0.2rem;
+} 
+.counter p{
+    position: absolute;
+    top: 1.8rem;
+    left: 4.2rem;
+    color: red;
+}
+.clearcart-checkout{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+.clearcart-checkout .subtotal{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.clearcart-checkout .checkoutSummary{
+    width: 40%;
+    padding: 2rem;
+}
+.btn:hover{
+    background-color: white;
+    border: none;
+}

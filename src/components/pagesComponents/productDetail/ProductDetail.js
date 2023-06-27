@@ -116,7 +116,7 @@ const ProductDetail = () => {
               <p>{product.desc}</p>
             </div>
             <div>
-              {isInCart === 0 ? (
+              {isInCart < 0 ? null : (
                 <div className={classes.counter}>
                   <Button
                     className={classes.btn}
@@ -130,7 +130,7 @@ const ProductDetail = () => {
                     +
                   </Button>
                 </div>
-              ) : null}
+              ) }
 
               <Button
                 className={classes.cartBtn}
