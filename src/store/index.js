@@ -120,9 +120,10 @@ const filteredSlice = createSlice({
 //SLICE F0UR : CARTSLICE
 const initialCartSlice = {
   cartItems :localStorage.getItem('cartItems')?JSON.parse(localStorage.getItem('cartItems')):[],
-  //cartItems: [],
-  cartTotalQty: 0,
-  cartTotalAmnt: 0,
+  // cartItems: [],
+  cartTotalQty: localStorage.getItem('totalQuantity') !== null? JSON.parse(localStorage.getItem('totalQuantity')):0,
+  
+  cartTotalAmnt: localStorage.getItem('totalAmount') !==null?JSON.parse(localStorage.getItem('totalAmount')):0,
 };
 
 const cartSlice = createSlice({
@@ -169,6 +170,9 @@ const cartSlice = createSlice({
       localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
       state.cartTotalQty = calculateCartTotalQty(state.cartItems);
       state.cartTotalAmnt = calculateCartTotalAmnt(state.cartItems);
+
+      // state.cartTotalQty = calculateCartTotalQty(state.cartItems);
+      // state.cartTotalAmnt = calculateCartTotalAmnt(state.cartItems);
     },
     CART_TOTALQUANTITY(state){
       const array =[];
@@ -181,6 +185,7 @@ const cartSlice = createSlice({
         return a+ b
       },0);
       state.cartTotalQty = totalQty
+      localStorage.setItem("totalQuantity", JSON.stringify(state.cartTotalQty));
     },
     CART_TOTALAMOUNT(state){
       const array = [];
@@ -193,8 +198,8 @@ const cartSlice = createSlice({
         return a + b
       },0)
       state.cartTotalAmnt = totalAmount
-      localStorage.setItem('cartItems', JSON.stringify(state.cartTotalAmnt))
-      // state.cartTotalAmnt = calculateCartTotalAmnt(state.cartItems);
+      //localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
+      localStorage.setItem("totalAmount", JSON.stringify(state.cartTotalQty));
     },
     REMOVEPRODUCT_FROM_CART(state, action) {
       // console.log(action.payload);
@@ -209,6 +214,7 @@ const cartSlice = createSlice({
       }
       localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
       state.cartTotalQty = calculateCartTotalQty(state.cartItems);
+      state.cartTotalAmnt = calculateCartTotalAmnt(state.cartItems);
     },
     CLEAR_CART(state) {
       state.cartItems = [];

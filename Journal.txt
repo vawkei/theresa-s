@@ -1,0 +1,64 @@
+The local storage for the cart reducer in the store index.js really gave me a very very tough time, chatgpt came to the rescue, here is the explanation of the codes in that cart reducer:
+
+1.
+const initialCartSlice = {
+  cartItems: localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [],
+  cartTotalQty: 0,
+  cartTotalAmnt: 0,
+};
+expanation:
+In this code snippet, we define the initial state for the cart slice. The cartItems property is initialized by retrieving the value from the local storage using localStorage.getItem('cartItems'). If a value exists in the local storage, it is parsed using JSON.parse(). If there is no value in the local storage or the parsing fails, an empty array is used as the default value. The cartTotalQty and cartTotalAmnt properties are set to 0.
+
+2.
+const cartSlice = createSlice({
+  name: "cart",
+  initialState: initialCartSlice,
+  reducers: {
+    ADDPRODUCT_TO_STORE(state, action) {
+      if (!Array.isArray(state.cartItems)) {
+        state.cartItems = [];
+      }
+
+      const productIndex = state.cartItems.findIndex(
+        (item) => item.id === action.payload.id
+      );
+
+      if (productIndex >= 0) {
+        state.cartItems[productIndex].quantity += 1;
+        console.log(`${action.payload.name} increased by one`);
+      } else {
+        const tempProduct = { ...action.payload, quantity: 1 };
+        state.cartItems.push(tempProduct);
+        console.log(`${action.payload.name} added to cart`);
+      }
+
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+
+      state.cartTotalQty = calculateCartTotalQty(state.cartItems);
+      state.cartTotalAmnt = calculateCartTotalAmnt(state.cartItems);
+    },
+
+    // Other reducer cases...
+
+  },
+});
+
+3.
+    ADDPRODUCT_TO_STORE(state, action) {
+      if (!Array.isArray(state.cartItems)) {
+        state.cartItems = [];
+       
+        explanation:In this part of the code, we are checking if the cartItems in our state is an array. If it's not an array, it means that we have a problem or it hasn't been initialized properly.
+
+        Imagine you have a collection of toys, and you want to check if you have a specific toy in your collection. But if you don't have any toys at all or your toy collection is missing, it would be hard to find that specific toy, right? So, in this code, we are making sure that our toy collection (i.e., cartItems) is always there.
+
+        If it's not there (not an array), we set it to an empty collection (an empty array) so that we can add toys to it later.
+
+        So we perform a check to ensure that state.cartItems is an array. If it's not an array (possibly due to an initialization issue or incorrect local storage value), we set it to an empty array using state.cartItems = [].
+
+        In JavaScript, the Array.isArray() function is used to check if a value is an array or not. It returns true if the value is an array and false otherwise. 
+        In simpler terms, ! means "not". So, !Array.isArray(state.cartItems) is checking if state.cartItems is not an array. So, in simpler terms, the code is checking if state.cartItems is not already an array and setting it to an empty array if that's the case.
+      }
+
+
+    }
