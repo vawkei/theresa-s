@@ -5,14 +5,17 @@ import { cartActions } from "../../../store";
 import Button from "../../ui/button/Button";
 import Card from "../../ui/card/Card";
 import { useEffect } from "react";
+import {useNavigate} from 'react-router-dom';
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const cartTotalAmnt = useSelector((state) => state.cart.cartTotalAmnt);
+  const isLoggedIn = useSelector(state=>state.auth.isLoggedIn);
 
   var nairaSymbol = "\u20A6";
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
 
   useEffect(()=>{
@@ -33,6 +36,18 @@ const Cart = () => {
   };
   function clearCart() {
     dispatch(cartActions.CLEAR_CART());
+  };
+
+
+  const url = window.location.href
+
+  const checkoutHandler=()=>{
+    if(isLoggedIn){
+      navigate('/checkout-detail')
+    }else{
+      dispatch(cartActions.SAVE_URL(url))
+      navigate('/register')
+    }
   }
 
   return (
@@ -117,7 +132,7 @@ const Cart = () => {
             </div>
 
             <p>Delivery fees not included yet.</p>
-            <Button className={classes.btn}>
+            <Button className={classes.btn} onClick={checkoutHandler}>
               Checkout ({nairaSymbol}
               {cartTotalAmnt.toLocaleString()})
             </Button>
