@@ -19,6 +19,9 @@ import { useNavigate } from "react-router-dom";
 import Notifier from "../../ui/notifier/Notifier";
 import { AiOutlineEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
+import { cartActions } from "../../../store";
+import { useSelector } from "react-redux";
+
 
 const AuthForm = () => {
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -31,6 +34,10 @@ const AuthForm = () => {
 
   const [toRegister, setToRegister] = useState(true);
   const navigate = useNavigate();
+  const storedUrl =useSelector(state=>state.cart.prevUrl);
+
+  
+
 
   const authToggle = () => {
     setToRegister((prevState) => !prevState);
@@ -145,7 +152,13 @@ const AuthForm = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
-          navigate("/", { replace: true });
+          
+          if(storedUrl.includes('cart-page')){
+            navigate('/cart-page')
+          }else{
+            navigate("/", { replace: true });
+          };        
+          
         })
         .catch((error) => {
           const errorCode = error.code;

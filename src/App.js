@@ -10,6 +10,10 @@ import AdminPage from "./pages/AdminPage";
 import ShopNowPage from "./pages/ShopNowPage";
 import ProductDetail from "./components/pagesComponents/productDetail/ProductDetail";
 import CartPage from "./pages/CartPage";
+import CheckoutDetailsPage from "./pages/CheckoutDetailsPage";
+import CheckoutSummaryPage from "./pages/CheckoutSummaryPage";
+import CheckoutPage from "./pages/CheckoutPage";
+
 
 function App() {
   return (
@@ -32,6 +36,9 @@ function App() {
         <Route path="/shop-now" element={<ShopNowPage />} />
         <Route path="/shop-now/:id" element={<ProductDetail />} />
         <Route path="/cart-page" element={<CartPage />} />
+        <Route path="/checkout-detail" element={<CheckoutDetailsPage />} />
+        <Route path="/checkout-summary" element={<CheckoutSummaryPage />} />
+         <Route path="/checkout" element={<CheckoutPage />} /> 
       </Routes>
     </Layout>
   );
