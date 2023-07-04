@@ -1,10 +1,11 @@
-import CheckoutDetails from "../components/pagesComponents/checkoutDetails/CheckoutDetails";
+import PayStackLogic from "../components/pagesComponents/checkoutDetails/PaystackLogic";
 
 
 const CheckoutSummaryPage = () => {
     return ( 
         <div>
-            <CheckoutDetails />
+            <PayStackLogic />
+            {/* <CheckoutDetails /> No need  for this here,it now resides in PayStackLogic*/}
         </div>
      );
 }
