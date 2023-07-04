@@ -119,13 +119,21 @@ const filteredSlice = createSlice({
 
 //SLICE F0UR : CARTSLICE
 const initialCartSlice = {
-  cartItems :localStorage.getItem('cartItems')?JSON.parse(localStorage.getItem('cartItems')):[],
+  cartItems: localStorage.getItem("cartItems")
+    ? JSON.parse(localStorage.getItem("cartItems"))
+    : [],
   // cartItems: [],
-  cartTotalQty: localStorage.getItem('totalQuantity') !== null? JSON.parse(localStorage.getItem('totalQuantity')):0,
-  
-  cartTotalAmnt: localStorage.getItem('totalAmount') !==null?JSON.parse(localStorage.getItem('totalAmount')):0,
+  cartTotalQty:
+    localStorage.getItem("totalQuantity") !== null
+      ? JSON.parse(localStorage.getItem("totalQuantity"))
+      : 0,
 
-  prevUrl:''
+  cartTotalAmnt:
+    localStorage.getItem("totalAmount") !== null
+      ? JSON.parse(localStorage.getItem("totalAmount"))
+      : 0,
+
+  prevUrl: "",
 };
 
 const cartSlice = createSlice({
@@ -154,7 +162,7 @@ const cartSlice = createSlice({
       state.cartTotalQty = calculateCartTotalQty(state.cartItems);
       state.cartTotalAmnt = calculateCartTotalAmnt(state.cartItems);
     },
-    
+
     DECREASEPRODUCT_FROM_CART(state, action) {
       const productIndex = state.cartItems.findIndex(
         (item) => item.id === action.payload.id
@@ -167,39 +175,39 @@ const cartSlice = createSlice({
           (item) => item.id !== action.payload.id
         );
         state.cartItems = newCartItem;
-        console.log(`${action.payload.name} removed from cart`)
+        console.log(`${action.payload.name} removed from cart`);
       }
-      localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
       state.cartTotalQty = calculateCartTotalQty(state.cartItems);
       state.cartTotalAmnt = calculateCartTotalAmnt(state.cartItems);
 
       // state.cartTotalQty = calculateCartTotalQty(state.cartItems);
       // state.cartTotalAmnt = calculateCartTotalAmnt(state.cartItems);
     },
-    CART_TOTALQUANTITY(state){
-      const array =[];
-      state.cartItems.map((item)=>{
-        const {quantity} = item;
+    CART_TOTALQUANTITY(state) {
+      const array = [];
+      state.cartItems.map((item) => {
+        const { quantity } = item;
         const cartQty = quantity;
-        return array.push(cartQty)
+        return array.push(cartQty);
       });
-      const totalQty = array.reduce((a,b)=>{
-        return a+ b
-      },0);
-      state.cartTotalQty = totalQty
+      const totalQty = array.reduce((a, b) => {
+        return a + b;
+      }, 0);
+      state.cartTotalQty = totalQty;
       localStorage.setItem("totalQuantity", JSON.stringify(state.cartTotalQty));
     },
-    CART_TOTALAMOUNT(state){
+    CART_TOTALAMOUNT(state) {
       const array = [];
-      state.cartItems.map((item)=>{
-        const{price,quantity} = item;
-        const cartItemAmount=price * quantity;
-        return array.push(cartItemAmount)
+      state.cartItems.map((item) => {
+        const { price, quantity } = item;
+        const cartItemAmount = price * quantity;
+        return array.push(cartItemAmount);
       });
-      const totalAmount = array.reduce((a,b)=>{
-        return a + b
-      },0)
-      state.cartTotalAmnt = totalAmount
+      const totalAmount = array.reduce((a, b) => {
+        return a + b;
+      }, 0);
+      state.cartTotalAmnt = totalAmount;
       //localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
       localStorage.setItem("totalAmount", JSON.stringify(state.cartTotalAmnt));
     },
@@ -214,7 +222,7 @@ const cartSlice = createSlice({
           (item) => item.id !== product.id
         );
       }
-      localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
       state.cartTotalQty = calculateCartTotalQty(state.cartItems);
       state.cartTotalAmnt = calculateCartTotalAmnt(state.cartItems);
     },
@@ -222,43 +230,61 @@ const cartSlice = createSlice({
       state.cartItems = [];
       // localStorage.setItem('cartItems',JSON.stringify(state.cartItems))
       localStorage.clear();
-      state.cartTotalQty = 0; 
+      state.cartTotalQty = 0;
     },
-    SAVE_URL(state,action){
-      console.log(action.payload)
+    SAVE_URL(state, action) {
+      console.log(action.payload);
       state.prevUrl = action.payload;
     },
   },
 });
 
-
-const initialCheckoutState ={
-  checkout:[]
-};
+const initialCheckoutState = {
+  firstName: '',
+  surname: '',
+  residentialAddress: '',
+  town: '',
+  userState: '',
+  phoneNumber: '',
+  //they are all different states and not an array.
+}
 
 const checkoutSlice = createSlice({
-  name:'checkout',
-  initialState:initialCheckoutState,
-  reducers:{
-    ADDPRODUCT_TO_CHECKOUT(state,action){
-      console.log(action.payload)
+  name: "checkout",
+  initialState: initialCheckoutState,
+  reducers: {
+    ADDPRODUCT_TO_CHECKOUT(state, action) {
+      // console.log(action.payload);
+      // state.firstName=action.payload.firstName;
+      // state.surname = action.payload.surname;
+      // state.residentialAddress = action.payload.residentialAddress;
+      // state.phoneNumber = action.payload.phoneNumber;
+      // state.town = action.payload.town;
+      // state.userState = action.payload.userState
+      state = {
+        ...state,
+        ...action.payload,
+      };
     },
-  }
-})
+  },
+});
 
 const calculateCartTotalQty = (cartItems) => {
   return cartItems.reduce((total, item) => total + item.quantity, 0);
-}
+};
 const calculateCartTotalAmnt = (cartTotalAmnt) => {
-  return cartTotalAmnt.reduce((total, item) =>total+item.price*item.quantity, 0);
-}
+  return cartTotalAmnt.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+};
 const store = configureStore({
   reducer: {
     auth: authSlice.reducer,
     products: productsSlice.reducer,
     filter: filteredSlice.reducer,
     cart: cartSlice.reducer,
-    checkout:checkoutSlice.reducer
+    checkout: checkoutSlice.reducer,
   },
 });
 
@@ -268,25 +294,6 @@ export const filterActions = filteredSlice.actions;
 export const cartActions = cartSlice.actions;
 export const checkoutActions = checkoutSlice.actions;
 export default store;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //0RIGINAL:THE FIRST ONE BEFORE I REWROTE, TO WORK LOCALSTORAGE
 
@@ -323,8 +330,6 @@ export default store;
 //   },
 // });
 
-
-
 // //SLICE TW0 : PRODUCTSLICE
 // const initialProductsState = {
 //   products: [],
@@ -341,8 +346,6 @@ export default store;
 //     },
 //   },
 // });
-
-
 
 // //SLICE THR££ : FILTERSLICE
 // const initialFilterSlice = { filteredProducts: [] };
@@ -397,7 +400,7 @@ export default store;
 //     SORT_PRODUCTS(state, action) {
 //       //console.log(action.payload);
 //       const { products, sort } = action.payload;
-      
+
 //       let temporaryProducts = [];
 //       if (sort === "Latest") {
 //         temporaryProducts = products;
@@ -411,8 +414,6 @@ export default store;
 //       state.filteredProducts = temporaryProducts;
 //     },
 
-
- 
 //   },
 // })
 
@@ -439,10 +440,10 @@ export default store;
 //               console.log(state.cartItems)
 //               console.log(`${action.payload.name} added to cart`);
 //           }else{
-          
+
 //             existingItem.quantity = existingItem.quantity + 1
 //             console.log(`${action.payload.name} increased by 1`);
-//           }  
+//           }
 //         },
 //         DECREASEPRODUCT_FROM_CART(state,action){
 //          // console.log(action.payload)
@@ -453,7 +454,7 @@ export default store;
 //           state.cartItems= state.cartItems.filter((item)=>item.id !==newItem.id)
 //           state.cartTotalQty= state.cartTotalQty -1;
 //          }else{
-          
+
 //           existingItem.quantity = existingItem.quantity -1
 //          }
 //         },
@@ -464,11 +465,10 @@ export default store;
 //           if(existingItem){
 //             state.cartItems = state.cartItems.filter((item)=>item.id !==product.id)
 //           }
-          
+
 //         }
 //       }
 //     });
-
 
 // const store = configureStore({
 //   reducer: {

@@ -3,11 +3,11 @@ import Button from "../../ui/button/Button";
 import Card from "../../ui/card/Card";
 import classes from "./CheckoutDetails.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { checkoutActions } from "../../../store";
+import { cartActions } from "../../../store";
 import {useNavigate} from 'react-router-dom';
 
 
-const CheckoutDetails = () => {
+const CheckoutDetails = (props) => {
   const [formValidity, setFormValidity] = useState({
     firstName: true,
     surname: true,
@@ -85,16 +85,17 @@ const CheckoutDetails = () => {
     //   state: enteredState,
     //   phoneNumber: enteredPhoneNumber
     // })
-    dispatch(
-      checkoutActions.ADDPRODUCT_TO_CHECKOUT({
-        firstName: enteredFirstName,
-        surname: enteredSurname,
-        residentialAddress: enteredResidentialAddress,
-        town: enteredTown,
-        state: enteredState,
-        phoneNumber: enteredPhoneNumber,
-      })
-    );
+     
+    const enteredData = {
+      enteredFirstName,
+      enteredSurname,
+      enteredResidentialAddress,
+      enteredTown,
+      enteredState,
+      enteredPhoneNumber
+    }
+    props.onPayStackSubmitHandler(enteredData);
+    dispatch(cartActions.CLEAR_CART());
     navigate('/checkout')
   };
 
@@ -169,7 +170,7 @@ const CheckoutDetails = () => {
               <Button onClick={onCancel} className={classes.btn}>
                 Cancel
               </Button>
-              <Button className={classes.btn}>Confirm</Button>
+              <Button className={classes.btn} onClick={confirmHandler}>Confirm</Button>
             </div>
             {!formValidity.firstName &&
               !formValidity.phoneNumber &&
@@ -220,3 +221,13 @@ const CheckoutDetails = () => {
 };
 
 export default CheckoutDetails;
+// dispatch(
+    //   checkoutActions.ADDPRODUCT_TO_CHECKOUT({
+    //     firstName: enteredFirstName,
+    //     surname: enteredSurname,
+    //     residentialAddress: enteredResidentialAddress,
+    //     town: enteredTown,
+    //     userState: enteredState,
+    //     phoneNumber: enteredPhoneNumber,
+    //   })
+    // );
