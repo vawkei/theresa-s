@@ -1,0 +1,22 @@
+.cardClass{
+    display: flex;
+    justify-content: space-between;
+    width: 50rem;
+    transition: transform 3s;  
+    /*transition: transform 3s; this allows the  card move back to its initial position at the same pace at which it moved before. And this was what moved it before:transition-duration: 3s; */
+}
+.cardClass:hover{
+    transform: translateX(-200px);
+    transition-duration: 3s;
+}
+.right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.btn{
+    padding: 1rem;
+}
+.btn:hover{
+    border: none;
+}

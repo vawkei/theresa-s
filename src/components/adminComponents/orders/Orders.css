@@ -1,0 +1,26 @@
+.table-table{
+    width: 100%;
+}
+.table-table .thead{
+    width: 100%;
+}
+.table-table .tbody{
+    width: 100%;
+}
+
+
+
+/* table th{
+    text-align: center;
+    padding: 1rem;
+    border-bottom: 1px black solid;
+    border-right: 1px black solid;  
+    background-color: black;
+    color: white;  
+}
+table td{
+    text-align: center;
+    padding: 1rem;
+    border-bottom: 1px black solid;
+    border-right: 1px black solid;
+} */

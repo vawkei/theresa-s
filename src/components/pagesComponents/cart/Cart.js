@@ -55,8 +55,8 @@ const Cart = () => {
       {cartItems.length === 0 ? (
         <p>Cart is Freaken Empty</p>
       ) : (
-        <table className={classes.table}>
-          <thead>
+        <table className={classes["table-table"]}>
+          <thead className={classes.thead}>
             <tr>
               <th>s/n</th>
               <th>Product</th>
@@ -66,7 +66,7 @@ const Cart = () => {
               <th>Delete</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className={classes.tbody}>
             {cartItems.map((product, index) => {
               return (
                 <tr key={product.id}>

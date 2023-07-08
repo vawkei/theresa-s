@@ -1,0 +1,39 @@
+
+.table{
+    padding: 1rem;
+    margin-top: 5rem;
+}
+table:hover{
+    cursor: pointer;
+}
+.lead{
+    margin-top: 1rem;
+    padding: 1rem;
+}
+.lead p{
+    padding: 0.3rem;
+}
+.lead span{
+    color: blue;
+}
+table{
+    padding: 1rem;
+}
+table th{
+    text-align: center;
+    padding: 1rem;
+    border-bottom: 1px black solid;
+    border-right: 1px black solid;  
+    background-color: black;
+    color: white;  
+}
+table td{
+    text-align: center;
+    padding: 1rem;
+    border-bottom: 1px black solid;
+    border-right: 1px black solid;
+}
+table tr:hover{
+    color: blue;
+}
+

@@ -1,0 +1,11 @@
+.lead{
+    padding: 2rem;
+}
+.lead h4{
+    padding: 1rem;
+}
+.cardClass{
+    display: flex;
+    justify-content: space-between;
+    width: 50rem;
+}

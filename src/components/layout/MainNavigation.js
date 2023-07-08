@@ -45,7 +45,7 @@ const MainNavigation = () => {
 
   const cart = (
     <div className={classes.cart}>
-      <Link to={"/cart-page"}>
+      <Link to={"/cart"}>
         {" "}
         <p>Cart</p>
         <FaShoppingCart size={20} />
