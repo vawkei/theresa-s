@@ -1,0 +1,12 @@
+.status-card{
+    padding: 2rem;
+}
+.status-card select{
+    display: block;
+    margin-top: 2rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+}
+.status-card .btn{
+    display: block;
+}

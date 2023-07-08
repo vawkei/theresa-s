@@ -1,0 +1,27 @@
+.review{
+    margin-top: 5rem;
+}
+.cardClass{
+    display: flex;
+    justify-content: space-between;
+    padding: 5rem;
+    margin-right: 10rem;
+    height: 100%;
+    max-height: 60vh;
+    /* gap: 20rem; */
+}
+.right{
+    display: flex;
+    flex-direction: column;
+    padding: 1;
+}
+textarea{
+    width: 100%;
+}
+.btn{
+    background-color: blue;
+}
+.btn:hover{
+    background-color: white;
+    border: none;
+}

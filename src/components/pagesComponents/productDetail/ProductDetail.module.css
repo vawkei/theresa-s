@@ -65,3 +65,9 @@ width: 12rem;
     top: 2.2rem;
     left: 9.7rem;
 }
+.reviewCardClass{
+    padding: 2rem;
+}
+.rev p{
+    padding: 0.3rem;
+}

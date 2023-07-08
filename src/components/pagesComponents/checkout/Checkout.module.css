@@ -1,0 +1,18 @@
+.checkout{
+    margin: 6rem auto;
+}
+.checkout .content{
+    text-align: center;
+}
+.action{
+    display: flex;
+    justify-content: center;
+}
+.btn{
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+.btn:hover{
+    background-color: white;
+    border: none;
+}

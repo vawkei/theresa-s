@@ -231,6 +231,7 @@ const cartSlice = createSlice({
       // localStorage.setItem('cartItems',JSON.stringify(state.cartItems))
       localStorage.clear();
       state.cartTotalQty = 0;
+      state.cartTotalAmnt =0;
     },
     SAVE_URL(state, action) {
       console.log(action.payload);
@@ -269,6 +270,19 @@ const checkoutSlice = createSlice({
   },
 });
 
+const initialOrdersState ={orders:{}};
+
+const orderSlice = createSlice({
+  name:"orders",
+  initialState:initialOrdersState,
+  reducers:{
+    ADDORDERS_TO_STORE(state,action){
+      const orders = action.payload.orders
+      //console.log(orders);
+    }
+  }
+})
+
 const calculateCartTotalQty = (cartItems) => {
   return cartItems.reduce((total, item) => total + item.quantity, 0);
 };
@@ -285,6 +299,7 @@ const store = configureStore({
     filter: filteredSlice.reducer,
     cart: cartSlice.reducer,
     checkout: checkoutSlice.reducer,
+    orders: orderSlice.reducer
   },
 });
 
@@ -293,6 +308,7 @@ export const productsActions = productsSlice.actions;
 export const filterActions = filteredSlice.actions;
 export const cartActions = cartSlice.actions;
 export const checkoutActions = checkoutSlice.actions;
+export const ordersAction = orderSlice.actions
 export default store;
 
 //0RIGINAL:THE FIRST ONE BEFORE I REWROTE, TO WORK LOCALSTORAGE

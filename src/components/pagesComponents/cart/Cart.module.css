@@ -1,4 +1,4 @@
-.table-container{
+/* .table-container{
     margin-top: 2rem;
 }
 .table{
@@ -21,6 +21,17 @@ table td{
     padding: 1rem;
     border-bottom: 1px black solid;
     border-right: 1px black solid;
+} */
+
+
+.table-table{
+    width: 100%;
+}
+.table-table .thead{
+    width: 100%;
+}
+.table-table .tbody{
+    width: 100%;
 }
 
 .counter{

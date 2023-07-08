@@ -60,14 +60,14 @@ const AuthForm = () => {
     setInputErrorModal(null);
   };
 
-  let timeInterval = 5000;
+  let timeDuration = 5000;
   let notifierClearer;
 
   useEffect(() => {
     if (notifier) {
-      notifierClearer = setInterval(function () {
+      notifierClearer = setTimeout(function () {
         setNotifier("");
-      }, timeInterval);
+      }, timeDuration);
       return () => {
         clearInterval(notifierClearer);
       };
@@ -110,7 +110,7 @@ const AuthForm = () => {
           console.log(user);
           setNotifier({
             title: "Successful",
-            message: "Registration Successful,Kindly LogIn",
+            message: "Registration Successful, You are Now LoggedIn",
           });
           setIsLoading(false);
           setEnteredEmail("");
@@ -153,8 +153,8 @@ const AuthForm = () => {
           const user = userCredential.user;
           console.log(user);
           
-          if(storedUrl.includes('cart-page')){
-            navigate('/cart-page')
+          if(storedUrl.includes('cart')){
+            navigate('/cart')
           }else{
             navigate("/", { replace: true });
           };        

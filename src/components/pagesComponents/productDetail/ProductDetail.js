@@ -1,26 +1,37 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Button from "../../ui/button/Button";
 import Card from "../../ui/card/Card";
 import classes from "./ProductDetail.module.css";
 import { Link, useParams } from "react-router-dom";
 import { db } from "../../../firebase/Config";
-import { doc, getDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import { FaShoppingCart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../../store";
+import StarsRating from "react-star-rate";
 
 const ProductDetail = () => {
   const { id } = useParams();
   //  console.log(id);
+  const { id2 } = useParams();
+
   const [isLoading, setIsLoading] = useState(false);
   const [product, setProduct] = useState("");
+  const [reviews, setReviews] = useState([]);
 
   const cartItems = useSelector((state) => state.cart.cartItems);
   //console.log(cartItems)
   const cartProduct = cartItems.find((item) => item.id === id);
   //console.log(cartProduct)
   const isInCart = cartItems.findIndex((item) => item.id === id);
-  console.log(isInCart);
+  // console.log(isInCart);
   const dispatch = useDispatch();
 
   var nairaSymbol = "\u20A6";
@@ -47,6 +58,11 @@ const ProductDetail = () => {
     );
   };
 
+  // useEffect(() => {
+  //   getSingleProduct();
+  //   getSingleReview()
+  // }, []);
+
   const getSingleProduct = async () => {
     setIsLoading(true);
 
@@ -58,7 +74,7 @@ const ProductDetail = () => {
         id: id,
         ...docSnap.data(),
       };
-      console.log("document:", docSnap.data());
+      // console.log("document:", docSnap.data());
       setProduct(obj);
       setIsLoading(false);
     } else {
@@ -67,10 +83,31 @@ const ProductDetail = () => {
     }
   };
 
+  const getReviews = async () => {
+    try {
+      const reviewRef = collection(db, "reviews");
+      const q = query(reviewRef, orderBy("createdAt", "desc"));
+      onSnapshot(q, (snapShot) => {
+        console.log(snapShot);
+        const allReviews = snapShot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        //console.log(allReviews);
+        setReviews(allReviews);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const filteredReview = reviews.filter((review) => review.productID === id);
+  console.log(filteredReview);
+
   useEffect(() => {
     getSingleProduct();
+    getReviews();
   }, []);
-
   return (
     <div className={classes.detail}>
       <h2>Product detail</h2>
@@ -88,6 +125,41 @@ const ProductDetail = () => {
           <div className={classes.otherImages}>
             <img src={product.imageUrl_2} style={{ width: "10rem" }} />
             <img src={product.imageUrl_3} style={{ width: "10rem" }} />
+          </div>
+
+          <div className={classes.review}>
+            <Card className={classes.reviewCardClass}>
+              <h2>Product Review</h2>
+              <hr />
+              {filteredReview.length >0 ? (
+                <Fragment>
+                  {filteredReview.map((rev) => {
+                    const {
+                      userId,
+                      userName,
+                      rate,
+                      review,
+                      reviewDate,
+                      reviewTime,
+                    } = rev;
+
+                    return (
+                      <div className={classes.rev} key={userId}>
+                        <StarsRating value={rate} />
+                        <p>{review}</p>
+                        <p>{reviewDate}</p>
+                        <p>{reviewTime}</p>
+                        <p>
+                          <b>{userName}</b>
+                        </p>
+                      </div>
+                    );
+                  })}
+                </Fragment>
+              ) : (
+                <p>No Reviews for this product yet</p>
+              )}
+            </Card>
           </div>
         </div>
 
@@ -120,7 +192,7 @@ const ProductDetail = () => {
                 <div className={classes.counter}>
                   <Button
                     className={classes.btn}
-                    onClick={()=>decreaseCartHandler(product)}>
+                    onClick={() => decreaseCartHandler(product)}>
                     -
                   </Button>
                   <p>{cartProduct.quantity}</p>
@@ -130,7 +202,7 @@ const ProductDetail = () => {
                     +
                   </Button>
                 </div>
-              ) }
+              )}
 
               <Button
                 className={classes.cartBtn}

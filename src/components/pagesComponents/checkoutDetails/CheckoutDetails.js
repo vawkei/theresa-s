@@ -1,11 +1,11 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, Fragment } from "react";
 import Button from "../../ui/button/Button";
 import Card from "../../ui/card/Card";
 import classes from "./CheckoutDetails.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { cartActions } from "../../../store";
-import {useNavigate} from 'react-router-dom';
-
+import { cartActions, checkoutActions } from "../../../store";
+import { useNavigate } from "react-router-dom";
+import Notifier from "../../ui/notifier/Notifier";
 
 const CheckoutDetails = (props) => {
   const [formValidity, setFormValidity] = useState({
@@ -30,7 +30,6 @@ const CheckoutDetails = (props) => {
   const cartTotalAmnt = useSelector((state) => state.cart.cartTotalAmnt);
   var nairaSymbol = "\u20A6";
   const navigate = useNavigate();
-
 
   const confirmHandler = (e) => {
     e.preventDefault();
@@ -76,6 +75,7 @@ const CheckoutDetails = (props) => {
       console.log("Fill in the inputs baby!!!");
       return;
     }
+
     console.log("God Please Bless my Handwork");
     // console.log({
     //   firstName: enteredFirstName,
@@ -85,18 +85,18 @@ const CheckoutDetails = (props) => {
     //   state: enteredState,
     //   phoneNumber: enteredPhoneNumber
     // })
-     
+
     const enteredData = {
       enteredFirstName,
       enteredSurname,
       enteredResidentialAddress,
       enteredTown,
       enteredState,
-      enteredPhoneNumber
-    }
+      enteredPhoneNumber,
+    };
     props.onPayStackSubmitHandler(enteredData);
     dispatch(cartActions.CLEAR_CART());
-    navigate('/checkout')
+    // navigate("/checkout", { replace: true });
   };
 
   const onCancel = () => {
@@ -110,124 +110,124 @@ const CheckoutDetails = (props) => {
 
   return (
     <div className={classes.container}>
-      <div className={classes["checkout-details"]}>
-        <h2>Checkout Details</h2>
-        <Card>
-          <form action="" onSubmit={confirmHandler}>
-            <div
-              className={`${classes.control} ${
-                !formValidity.firstName ? classes.invalid : ""
-              }`}>
-              <label>First Name:</label>
-              <input type="text" ref={firstNameInputRef} />
-              {!formValidity.firstName && <p>Please fill out the input</p>}
-            </div>
-            <div
-              className={`${classes.control} ${
-                !formValidity.surname ? classes.invalid : ""
-              }`}>
-              <label htmlFor="">Surname:</label>
-              <input type="text" ref={surnameInputRef} />
-              {!formValidity.surname && <p>Please fill out the input</p>}
-            </div>
-            <div
-              className={`${classes.control} ${
-                !formValidity.residentialAddress ? classes.invalid : ""
-              }`}>
-              <label htmlFor="">Residential Address:</label>
-              <input type="text" ref={residentialAddressInputRef} />
-              {!formValidity.residentialAddress && (
-                <p>Please fill out the input</p>
-              )}
-            </div>
-            <div
-              className={`${classes.control} ${
-                !formValidity.town ? classes.invalid : ""
-              }`}>
-              <label htmlFor="">Town:</label>
-              <input type="text" ref={townInputRef} />
-              {!formValidity.town && <p>Please fill out the input</p>}
-            </div>
-            <div
-              className={`${classes.control} ${
-                !formValidity.state ? classes.invalid : ""
-              }`}>
-              <label htmlFor="">State:</label>
-              <input type="text" ref={stateInputRef} />
-              {!formValidity.state && <p>Please fill out the input</p>}
-            </div>
-            <div
-              className={`${classes.control} ${
-                !formValidity.phoneNumber ? classes.invalid : ""
-              }`}>
-              <label htmlFor="">Phone Number:</label>
-              <input type="text" ref={phoneNumberInputRef} />
-              {!formValidity.phoneNumber && (
-                <p>Phone number should be 11 digits</p>
-              )}
-            </div>
-            <div className={classes.action}>
-              <Button onClick={onCancel} className={classes.btn}>
-                Cancel
-              </Button>
-              <Button className={classes.btn} onClick={confirmHandler}>Confirm</Button>
-            </div>
-            {!formValidity.firstName &&
-              !formValidity.phoneNumber &&
-              !formValidity.residentialAddress &&
-              !formValidity.surname &&
-              !formValidity.state &&
-              !formValidity.town && <p>Please fill out the inputs</p>}
-          </form>
-        </Card>
-      </div>
+      {cartItems.length === 0 ? (
+        <p>Cart is Freaking Empty</p>
+      ) : (
+        <Fragment>
+          <div className={classes["checkout-details"]}>
+            <h2>Checkout Details</h2>
+            <Card>
+              <form action="" onSubmit={confirmHandler}>
+                <div
+                  className={`${classes.control} ${
+                    !formValidity.firstName ? classes.invalid : ""
+                  }`}>
+                  <label>First Name:</label>
+                  <input type="text" ref={firstNameInputRef} />
+                  {!formValidity.firstName && <p>Please fill out the input</p>}
+                </div>
+                <div
+                  className={`${classes.control} ${
+                    !formValidity.surname ? classes.invalid : ""
+                  }`}>
+                  <label htmlFor="">Surname:</label>
+                  <input type="text" ref={surnameInputRef} />
+                  {!formValidity.surname && <p>Please fill out the input</p>}
+                </div>
+                <div
+                  className={`${classes.control} ${
+                    !formValidity.residentialAddress ? classes.invalid : ""
+                  }`}>
+                  <label htmlFor="">Residential Address:</label>
+                  <input type="text" ref={residentialAddressInputRef} />
+                  {!formValidity.residentialAddress && (
+                    <p>Please fill out the input</p>
+                  )}
+                </div>
+                <div
+                  className={`${classes.control} ${
+                    !formValidity.town ? classes.invalid : ""
+                  }`}>
+                  <label htmlFor="">Town:</label>
+                  <input type="text" ref={townInputRef} />
+                  {!formValidity.town && <p>Please fill out the input</p>}
+                </div>
+                <div
+                  className={`${classes.control} ${
+                    !formValidity.state ? classes.invalid : ""
+                  }`}>
+                  <label htmlFor="">State:</label>
+                  <input type="text" ref={stateInputRef} />
+                  {!formValidity.state && <p>Please fill out the input</p>}
+                </div>
+                <div
+                  className={`${classes.control} ${
+                    !formValidity.phoneNumber ? classes.invalid : ""
+                  }`}>
+                  <label htmlFor="">Phone Number:</label>
+                  <input type="text" ref={phoneNumberInputRef} />
+                  {!formValidity.phoneNumber && (
+                    <p>Phone number should be 11 digits</p>
+                  )}
+                </div>
+                <div className={classes.action}>
+                  <Button onClick={onCancel} className={classes.btn}>
+                    Cancel
+                  </Button>
+                  <Button className={classes.btn} onClick={confirmHandler}>
+                    Confirm
+                  </Button>
+                </div>
+                {!formValidity.firstName &&
+                  !formValidity.phoneNumber &&
+                  !formValidity.residentialAddress &&
+                  !formValidity.surname &&
+                  !formValidity.state &&
+                  !formValidity.town && <p>Please fill out the inputs</p>}
+              </form>
+            </Card>
+          </div>
 
-      <div className={classes["checkout-summary"]}>
-        <h2>Checkout Summary</h2>
-        <p style={{ color: "red" }}>
-            <b> {`Cart Items: ${cartTotalQty}`} </b>
-          </p>
-          <p style={{ color: "green" }}>
-            <b> {`Total Amount: ${nairaSymbol}${cartTotalAmnt.toLocaleString()}`} </b>
-          </p>
-        <Card className={classes.itemCard}>
-          
-          {cartItems.map((item, index) => {
-            return (
-              <div key={item.id} className={classes.item}>
-                <h4>{item.name}</h4>
-                <p>
-                  <b> {`Quantity:${item.quantity}`} </b>
-                </p>
-                <p>
-                  <b>
-                    {`Unit Price: ${nairaSymbol}${item.price.toLocaleString()}`}
-                  </b>
-                </p>
-                <p>
-                  <b>
-                    {`Set Price: ${nairaSymbol}${(
-                      item.price * item.quantity
-                    ).toLocaleString()}`}
-                  </b>
-                </p>
-              </div>
-            );
-          })}
-        </Card>
-      </div>
+          <div className={classes["checkout-summary"]}>
+            <h2>Checkout Summary</h2>
+            <p style={{ color: "red" }}>
+              <b> {`Cart Items: ${cartTotalQty}`} </b>
+            </p>
+            <p style={{ color: "green" }}>
+              <b>
+                {" "}
+                {`Total Amount: ${nairaSymbol}${cartTotalAmnt.toLocaleString()}`}{" "}
+              </b>
+            </p>
+            <Card className={classes.itemCard}>
+              {cartItems.map((item, index) => {
+                return (
+                  <div key={item.id} className={classes.item}>
+                    <h4>{item.name}</h4>
+                    <p>
+                      <b> {`Quantity:${item.quantity}`} </b>
+                    </p>
+                    <p>
+                      <b>
+                        {`Unit Price: ${nairaSymbol}${item.price.toLocaleString()}`}
+                      </b>
+                    </p>
+                    <p>
+                      <b>
+                        {`Set Price: ${nairaSymbol}${(
+                          item.price * item.quantity
+                        ).toLocaleString()}`}
+                      </b>
+                    </p>
+                  </div>
+                );
+              })}
+            </Card>
+          </div>
+        </Fragment>
+      )}
     </div>
   );
 };
 
 export default CheckoutDetails;
-// dispatch(
-    //   checkoutActions.ADDPRODUCT_TO_CHECKOUT({
-    //     firstName: enteredFirstName,
-    //     surname: enteredSurname,
-    //     residentialAddress: enteredResidentialAddress,
-    //     town: enteredTown,
-    //     userState: enteredState,
-    //     phoneNumber: enteredPhoneNumber,
-    //   })
-    // );

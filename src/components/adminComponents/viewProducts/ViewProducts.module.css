@@ -4,7 +4,9 @@
     height: 100vh;
 }   */
 
-.table{
+
+/* starts from below */
+/* .table{
     padding: 1rem;
     width: 100%;
 }
@@ -32,13 +34,13 @@ table{
 .table th{
     padding: 1rem;
     border: 2px solid black;
-}
-th,td{
+} */
+/* th,td{ */
     /* vertical-align: top; this pushes the words to the top of the cell from the middle*/
-    text-align: left;
-}
+    /* text-align: left; */
+/* }
 .table tbody td{
     padding: 1.5rem;
     border: 2px solid black;
-}
+} */
 
