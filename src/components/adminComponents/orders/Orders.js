@@ -3,12 +3,15 @@ import { useEffect, useState } from "react";
 import { db } from "../../../firebase/Config";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import {useDispatch} from "react-redux";
+import { ordersAction } from "../../../store";
+
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [isLoading, setIsLoading] = useState("");
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getOrders();
@@ -32,7 +35,10 @@ const Orders = () => {
           ...doc.data(),
         }));
         setOrders(allOrders);
-        //console.log(allOrders);
+        dispatch(ordersAction.ADDORDERS_TO_STORE({orders:allOrders.map((order)=>({
+          ...order,
+          createdAt: new Date(order.createdAt.seconds*1000).toDateString()
+        }))}))
       });
       setIsLoading(false);
     } catch (error) {

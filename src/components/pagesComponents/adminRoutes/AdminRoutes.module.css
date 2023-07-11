@@ -2,11 +2,11 @@
     display: flex;
 }
 .nav{
-    width: 20%;
+    width: 15%;
     min-height: 80vh;
 }
 .content{
-    width: 80%;
+    width: 85%;
     padding: 1rem;
 }
 

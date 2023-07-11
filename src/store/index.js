@@ -231,7 +231,7 @@ const cartSlice = createSlice({
       // localStorage.setItem('cartItems',JSON.stringify(state.cartItems))
       localStorage.clear();
       state.cartTotalQty = 0;
-      state.cartTotalAmnt =0;
+      state.cartTotalAmnt = 0;
     },
     SAVE_URL(state, action) {
       console.log(action.payload);
@@ -241,14 +241,14 @@ const cartSlice = createSlice({
 });
 
 const initialCheckoutState = {
-  firstName: '',
-  surname: '',
-  residentialAddress: '',
-  town: '',
-  userState: '',
-  phoneNumber: '',
+  firstName: "",
+  surname: "",
+  residentialAddress: "",
+  town: "",
+  userState: "",
+  phoneNumber: "",
   //they are all different states and not an array.
-}
+};
 
 const checkoutSlice = createSlice({
   name: "checkout",
@@ -270,18 +270,56 @@ const checkoutSlice = createSlice({
   },
 });
 
-const initialOrdersState ={orders:{}};
+const initialOrdersState = { orders: [], totalOrderAmount: 0, dailyOrderAmount:0 };
 
 const orderSlice = createSlice({
-  name:"orders",
-  initialState:initialOrdersState,
-  reducers:{
-    ADDORDERS_TO_STORE(state,action){
-      const orders = action.payload.orders
+  name: "orders",
+  initialState: initialOrdersState,
+  reducers: {
+    ADDORDERS_TO_STORE(state, action) {
+      const orders = action.payload.orders;
       //console.log(orders);
+      state.orders = orders;
+    },
+    CALCULATE_TOTAL_ORDER_AMOUNT(state,action){
+      //console.log(action.payload)
+      
+      let arr = [];
+      const orders = action.payload.orders;
+      //console.log(orders)
+      
+      orders.map((order)=>{
+        const orderAmount = order.cartItemAmount;
+        return arr.push(orderAmount)  
+      });
+      //console.log(arr)
+     const lipps =  arr.reduce((currNumber,item)=>{
+        return currNumber +item
+      },0)
+      //console.log(lipps);
+      state.totalOrderAmount = lipps
+    },
+    CALCULATE_DAILY_ORDER_AMOUNT(state,action){
+        const orders = action.payload
+        //console.log(orders.orders);
+        const ordersArray = orders.orders
+        //console.log(ordersArray)
+        
+        const todaysDate = new Date();
+        const todayInDateString = todaysDate.toDateString() 
+        //console.log(todayInDateString);
+
+        // const lipps = ordersArray.map((babe)=>{
+        //   return babe.orderedDate
+        // });
+        const lipps = ordersArray.filter((babe)=>{
+         return babe.orderedDate === todayInDateString;
+        });
+        state.dailyOrderAmount = lipps;
+        //console.log(lipps)
     }
-  }
-})
+  },
+});
 
 const calculateCartTotalQty = (cartItems) => {
   return cartItems.reduce((total, item) => total + item.quantity, 0);
@@ -299,7 +337,7 @@ const store = configureStore({
     filter: filteredSlice.reducer,
     cart: cartSlice.reducer,
     checkout: checkoutSlice.reducer,
-    orders: orderSlice.reducer
+    orders: orderSlice.reducer,
   },
 });
 
@@ -308,7 +346,7 @@ export const productsActions = productsSlice.actions;
 export const filterActions = filteredSlice.actions;
 export const cartActions = cartSlice.actions;
 export const checkoutActions = checkoutSlice.actions;
-export const ordersAction = orderSlice.actions
+export const ordersAction = orderSlice.actions;
 export default store;
 
 //0RIGINAL:THE FIRST ONE BEFORE I REWROTE, TO WORK LOCALSTORAGE
