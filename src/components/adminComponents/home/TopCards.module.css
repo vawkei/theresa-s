@@ -1,0 +1,12 @@
+.topClass{
+    display: flex;
+    justify-content: space-between;
+    padding:0 2rem;
+    gap: 4rem;
+    width: 100%;    
+}
+.BarCharts{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+}
