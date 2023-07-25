@@ -1,3 +1,7 @@
+Started June 10,2023.
+
+
+
 The local storage for the cart reducer in the store index.js really gave me a very very tough time, chatgpt came to the rescue, here is the explanation of the codes in that cart reducer:
 
 1.
@@ -72,6 +76,18 @@ Was having some wierd issue. I have not experienced any issue like it before des
 
 
 
+
+
+>Didnt make the Admin section Mobile responsive
+
+>Didnt make the uaser Orders table Mobile responsive
+
+>Then didnt really test the Paystack Live payment pay with bank feature, because they only had two banks compatible: kuda and gtb.
+
+
+
+
+Finished July 25, 2023.
 
 
 
