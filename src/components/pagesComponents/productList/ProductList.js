@@ -9,6 +9,7 @@ import { filterActions } from "../../../store";
 const ProductList = (props) => {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("Latest");
+
   const dispatch = useDispatch();
 
   const searchChangeHandler = (e) => {
@@ -22,7 +23,6 @@ const ProductList = (props) => {
   //console.log(products.imageUrl)
   // products here is coming live from the db since we are using props.Remember we set our setProducts to allProducts in the ShopNow component.
 
-
   useEffect(() => {
     dispatch(
       filterActions.SORT_PRODUCTS({
@@ -31,11 +31,10 @@ const ProductList = (props) => {
           createdAt: new Date(product.createdAt.seconds * 1000).toDateString(),
           editedAt: new Date(product.createdAt.seconds * 1000).toDateString(),
         })),
-        sort: sort
+        sort: sort,
       })
-    
     );
-  }, [dispatch,products,sort,search]);
+  }, [dispatch, products, sort, search]);
 
   useEffect(() => {
     dispatch(
@@ -45,20 +44,29 @@ const ProductList = (props) => {
           createdAt: new Date(product.createdAt.seconds * 1000).toDateString(),
           editedAt: new Date(product.createdAt.seconds * 1000).toDateString(),
         })),
-     search:search })
+        search: search,
+      })
     );
-  }, [dispatch,products,search]);
-
+  }, [dispatch, products, search]);
 
   return (
     <div>
-      <div className={classes.top}>
+      {products.length > 0?(
+        <>
+        <div className={classes.top}>
         <div className={classes.search}>
           <Search
             value={search}
             onChange={searchChangeHandler}
             placeholder={"Search products, brands and categories"}
           />
+        </div>
+        <div>
+          <button
+            className={classes.filterToggle}
+            onClick={props.filterToggleHandler}>
+            &#9776;
+          </button>
         </div>
         <div className={classes.sort}>
           <label htmlFor="">Sort:</label>
@@ -70,40 +78,12 @@ const ProductList = (props) => {
         </div>
       </div>
 
-      <ProductItem products={products} />
+      <ProductItem products={products} />  
+      
+      </>
+      ):""}
     </div>
   );
 };
 
 export default ProductList;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

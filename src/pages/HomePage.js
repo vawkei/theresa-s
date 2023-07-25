@@ -3,7 +3,8 @@ import Home from "../components/pagesComponents/home/Home";
 
 const HomePage = () => {
     return ( 
-        <div>
+        <div >
+            {/* style={{width: "100%", maxWidth: "60rem", margin: "10rem auto"}} id="productsSlider" */}
             <h2>HomePage</h2>
             <Home />
         </div>

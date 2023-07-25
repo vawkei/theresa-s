@@ -86,7 +86,7 @@ const filteredSlice = createSlice({
       state.filteredProducts = temporaryProducts;
     },
     FILTERPRODUCT_BY_SEARCH(state, action) {
-      // console.log(action.payload)
+       //console.log(action.payload.products)
       const { products, search } = action.payload;
 
       const temporaryProducts = products.filter(

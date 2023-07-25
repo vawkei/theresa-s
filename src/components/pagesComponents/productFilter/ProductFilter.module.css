@@ -1,4 +1,4 @@
-.filter{
+.filterComp{
     border-right: 1px solid #ccc;
     padding: 1rem;
     width: 100%;
@@ -32,3 +32,14 @@
     background-color: none;
     border: none;
 }
+
+
+@media screen and (max-width: 640px){
+    .filterComp{        
+        border-right: none;
+        width: 100%;
+        /*background-color: black;
+        border: 1px solid white; */
+    }
+    
+}                   

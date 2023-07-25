@@ -1,4 +1,5 @@
 import classes from './MainFooter.module.css';
+import {useNavigate} from "react-router-dom"
 
 const MainFooter = () => {
   const yearInFull = new Date();
@@ -7,6 +8,15 @@ const MainFooter = () => {
 
   // console.log(yearInFull);
   // console.log(month,year)
+
+  const navigate = useNavigate();
+
+
+  const navigateHandler = ()=>{
+    window.scrollTo(0,0)
+    navigate("/")
+  };
+
 
   const months = [
     "January",
@@ -27,7 +37,7 @@ const MainFooter = () => {
   console.log(dateInFull);
   return (
     <div className={classes.footer}>
-      <h2>{dateInFull}</h2>
+      <h2 onClick={navigateHandler}>{`<HowZ /> ${dateInFull}`}</h2>
     </div>
   );
 };

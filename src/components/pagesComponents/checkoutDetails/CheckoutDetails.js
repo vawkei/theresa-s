@@ -189,16 +189,19 @@ const CheckoutDetails = (props) => {
           </div>
 
           <div className={classes["checkout-summary"]}>
-            <h2>Checkout Summary</h2>
-            <p style={{ color: "red" }}>
-              <b> {`Cart Items: ${cartTotalQty}`} </b>
-            </p>
-            <p style={{ color: "green" }}>
-              <b>
-                {" "}
-                {`Total Amount: ${nairaSymbol}${cartTotalAmnt.toLocaleString()}`}{" "}
-              </b>
-            </p>
+            <div className={classes.lead}>
+              <h2>Checkout Summary</h2>
+              <p style={{ color: "red" }}>
+                <b> {`Cart Items: ${cartTotalQty}`} </b>
+              </p>
+              <p style={{ color: "green" }}>
+                <b>
+                  {" "}
+                  {`Total Amount: ${nairaSymbol}${cartTotalAmnt.toLocaleString()}`}{" "}
+                </b>
+              </p>
+            </div>
+
             <Card className={classes.itemCard}>
               {cartItems.map((item, index) => {
                 return (

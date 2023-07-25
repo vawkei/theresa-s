@@ -1,71 +1,105 @@
-/* .table-container{
-    margin-top: 2rem;
+.container {
+  width: 100%;  
 }
-.table{
-    padding: 1rem;
-    border:2px black solid;
+.product {
+  width: 65%;
+  margin: 0;
+  display: flex;
+  padding: 1rem;
+  gap: 3rem;
 }
-table{
-    padding: 1rem;
+
+.left {
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
 }
-table th{
+.content p {
+  padding: 0.5rem;
+}
+
+.right {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 30rem;
+  height: 5rem;
+  margin-top: 10rem;
+}
+.counter {
+  display: flex;
+  position: relative;
+  gap: 1.5rem;
+}
+.counter p {
+  position: absolute;
+  top: 2rem;
+  left: 10.5rem;
+}
+
+.clearcart-checkout {
+  display: flex;
+  justify-content: right;
+  position: fixed;
+  top: 7rem;
+  right: 2rem;
+  width: 25%;
+}
+
+.checkoutSummary {
+  width: 30rem;
+  padding: 2rem;
+}
+.subtotal {
+  padding: 1rem;
+}
+.action {
+  display: flex;
+  justify-content: space-between;
+}
+.btn1 {
+  color: red;
+}
+
+@media screen and (max-width: 640px) {
+  .container {
+    width: 100%;
+    overflow: scroll;
+  }
+  .container > p {
     text-align: center;
-    padding: 1rem;
-    border-bottom: 1px black solid;
-    border-right: 1px black solid;  
-    background-color: black;
-    color: white;  
-}
-table td{
-    text-align: center;
-    padding: 1rem;
-    border-bottom: 1px black solid;
-    border-right: 1px black solid;
-} */
-
-
-.table-table{
+  }
+  .product {
     width: 100%;
-}
-.table-table .thead{
-    width: 100%;
-}
-.table-table .tbody{
-    width: 100%;
-}
-
-.counter{
     display: flex;
-    align-items: center;
-    gap: 1rem; 
+    flex-direction: column;
+    /* padding: 0rem; */
+    gap: 0rem;
+  }
+
+  .right {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .counter{
     position: relative;
-} 
-.counter .btn{
-    text-align: center;
-    width: 0.2rem;
-} 
-.counter p{
+  }
+  .counter p{
     position: absolute;
-    top: 1.8rem;
-    left: 4.2rem;
-    color: red;
-}
-.clearcart-checkout{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-}
-.clearcart-checkout .subtotal{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.clearcart-checkout .checkoutSummary{
-    width: 40%;
-    padding: 2rem;
-}
-.btn:hover{
-    background-color: white;
-    border: none;
+    top: 2rem;
+    left: 5.3rem;
+  }
+  .btn {
+    width: 5rem;
+  }
+  .clearcart-checkout {
+    position: static;
+    margin-top: 2rem;
+    width: 100%;
+  }
+  .checkoutSummary{
+    text-align: center;
+    width: 100%;
+  }
 }

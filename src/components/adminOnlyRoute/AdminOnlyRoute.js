@@ -19,14 +19,14 @@ const AdminOnlyRoute = (props) => {
     return props.children;
   } else {
     return (
-      <div
-        style={{
-          margin: "6rem auto",
+      <div>
+        {/* style={{
+          margin: "10rem auto",
           padding: "2rem",
           borderRadius: "6px",
           backgroundColor: "green",
           textAlign: "center",
-        }}>
+        }} */}
         <p>You are not allowed to view the Admin Section</p>
         <button onClick={navigateHandler}>Click here to go back Home</button>
       </div>

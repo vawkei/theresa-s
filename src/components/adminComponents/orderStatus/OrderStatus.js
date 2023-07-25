@@ -25,6 +25,7 @@ const OrderStatus = (props) => {
                 orderStatus: status,
                 orderedDate: props.order.orderedDate,
                 orderedTime: props.order.orderedTime,
+                transactionRef: props.order.transactionRef,
                 userAddress:props.order.userAddress,
                 userEmail:props.order.userEmail,
                 userFirstName:props.order.userFirstName,

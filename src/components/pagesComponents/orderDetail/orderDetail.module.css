@@ -1,22 +1,45 @@
-.cardClass{
-    display: flex;
-    justify-content: space-between;
-    width: 50rem;
-    transition: transform 3s;  
-    /*transition: transform 3s; this allows the  card move back to its initial position at the same pace at which it moved before. And this was what moved it before:transition-duration: 3s; */
+.cardClass {
+  display: flex;
+  justify-content: space-between;
+  width: 50rem;
+  transition: transform 3s;
+  /*transition: transform 3s; this allows the  card move back to its initial position at the same pace at which it moved before. And this was what moved it before:transition-duration: 3s; */
 }
-.cardClass:hover{
-    transform: translateX(-200px);
-    transition-duration: 3s;
+.cardClass:hover {
+  transform: translateX(-200px);
+  transition-duration: 3s;
 }
-.right{
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.btn {
+  padding: 1rem;
+}
+.btn:hover {
+  border: none;
+}
+
+@media screen and (max-width: 640px) {
+
+  .order {
+    width: 90%;
+    text-align: center;
+    height: 80%;
+    max-height: 45rem;
+  }
+  .order h2{
+    font-size: 1.2rem;
+  }
+  .cardClass {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-}
-.btn{
-    padding: 1rem;
-}
-.btn:hover{
-    border: none;
+    height: 100%;
+    padding: 5rem 0;
+  }
+  .image{
+    padding: 2rem;
+  }
 }

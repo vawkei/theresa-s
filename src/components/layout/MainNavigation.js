@@ -194,7 +194,7 @@ const MainNavigation = () => {
 
           {isLoggedIn && (
             <li>
-              <Link href="/" onClick={LogOutUserHandler}>
+              <Link to="/" onClick={LogOutUserHandler}>
                 Logout
               </Link>
             </li>

@@ -6,11 +6,15 @@
     margin-left: 10rem;
     border-bottom: 1px #eee solid;
     margin-bottom: 2rem;
+    position: relative;
 }
 
 .search{
     text-align: right;
     padding-bottom: 2rem;
+}
+.filterToggle{
+    display: none;
 }
 .sort{
     padding-bottom: 2.5rem;
@@ -21,6 +25,51 @@
     font-size: 1.2rem;
 }
 
+@media screen and (max-width:640px){
+    .search {
+        position: absolute;
+        top: 3rem;
+        left: -10rem;
+    }
+    .sort{
+        position: absolute;
+        top: 7rem;
+        left: -10rem;
+    }
+    .filterToggle{
+        display: block;
+        padding: 0.5rem;
+        position: absolute;  
+        top: 3rem;
+        left: 6rem;
+        border-radius: 6px;
+        z-index: 500;
+    }
+}
+
+ 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+@media screen and (max-width:700px){
+    
+} */

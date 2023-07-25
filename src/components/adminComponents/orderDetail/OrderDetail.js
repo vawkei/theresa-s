@@ -47,7 +47,7 @@ const OrderDetail = () => {
 
   console.log(order);
   return (
-    <div>
+    <div style={{ width: "100%", maxWidth: "50rem", margin: "2rem auto" }}>
       {isLoading ? (
         <p>Loading...</p>
       ) : (
