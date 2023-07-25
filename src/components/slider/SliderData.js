@@ -7,7 +7,8 @@ export const SliderData = [
     {
         heading: 'Deep Freezer',
         image: 'https://i.ibb.co/gMYfkJ3/Haier-Thermocool-chest-Feezer.jpg',
-        desc: 'A deep Freezer, suitable for all occasions'
+        desc: "The deep freezer offers ample storage space for preserving your favorite foods. With its efficient cooling system and durable design, it ensures long-lasting freshness and convenience for your kitchen needs."
+
     },
     {
         heading: "Classy Ladies' Hand bag",
@@ -15,9 +16,9 @@ export const SliderData = [
         desc: 'A fashionable leather bag for women, suitable for all occasions'
     },
     {
-        heading: 'Fridge',
-        image: 'https://i.ibb.co/ScGpgVb/Bruhm-Top-Mount-Freezer-Fridge.jpg',
-        desc: 'A Refrigerator, a double combination of a fridge and a freezer'
+        heading: 'Fifa 23',
+        image: 'https://i.ibb.co/6nvjFqx/p26.jpg',
+        desc: "FIFA 23 delivers unparalleled soccer gaming experience with realistic gameplay, stunning graphics, and immersive modes. Compete with friends, build your dream team, and experience the thrill of the world's most popular sport"
     },
     {
         heading: 'Oculus Quest 2',

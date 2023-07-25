@@ -109,7 +109,7 @@ const AuthForm = () => {
           const user = userCredential.user;
           console.log(user);
           setNotifier({
-            title: "Successful",
+            title: "Success",
             message: "Registration Successful, You are Now LoggedIn",
           });
           setIsLoading(false);

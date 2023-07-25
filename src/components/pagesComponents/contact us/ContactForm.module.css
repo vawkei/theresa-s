@@ -1,0 +1,68 @@
+.contact{
+    display: flex;
+    gap: 3rem;
+    justify-content: space-between;
+}
+/* form{
+    display: flex;
+    gap: 3rem;
+    justify-content: space-between;
+} */
+.cardClass1{
+    padding: 2rem;
+    width: 50%;
+}
+.control{
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.control label{
+    display: block;
+    font: bold;
+}
+.control input{
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 6px;
+    font: inherit;
+    font-size: 1.2rem;
+}
+.action{
+    padding: 1rem;
+}
+.action .btn{
+    padding: 1rem;
+    width: 100%;
+}
+.action .btn:hover{
+background-color: white;
+border: none;
+}
+
+.cardClass2{
+    padding: 2rem;
+    width: 50%;
+}
+
+.invalid label{
+    color: #ca3e51;
+}
+.invalid input{
+    border-color: red;
+    background-color: #ffeff1;
+}
+.invalid textarea{
+    border-color: red;
+    background-color: #ffeff1;
+}
+
+
+@media screen and (max-width:640px){
+    .cardClass1{
+        width: 100%;
+    }
+    
+    .cardClass2{
+        display: none;
+    }
+}

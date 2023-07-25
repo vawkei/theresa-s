@@ -1,73 +1,134 @@
-.btn{
-width: 12rem;
+.btn {
+  width: 12rem;
 }
-.btn:hover{
-    background-color: white;
-    border: none;
-    color: black;
-}
-
-.btn a{
-    color: white;
-    text-decoration: none;
-}
-.btn a:hover{
-    color: black;
+.btn:hover {
+  background-color: white;
+  border: none;
+  color: black;
 }
 
+.btn a {
+  color: white;
+  text-decoration: none;
+}
+.btn a:hover {
+  color: black;
+}
 
-.cardClass{
-    display: flex;
-    width: 100%;   
+.cardClass {
+  display: flex;
+  width: 100%;
+  position: relative;
 }
-.cardClass2{
-    width: 80%;
+.cardClass2 {
+  width: 80%;
 }
-.content{
-    padding-left: 3rem;
-    width: 60%;
+.content {
+  padding-left: 3rem;
+  width: 60%;
 }
-.content div{
-    margin-bottom: 2rem;
+.content div {
+  margin-bottom: 2rem;
 }
-.brand{display: flex; gap: 1rem;}
-.cartBtn{
+.brand {
+  display: flex;
+  gap: 1rem;
+}
+.cartBtn {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  /* text-align: center; */
+}
+.cartBtn:hover {
+  background-color: white;
+  color: black;
+  border: none;
+}
+.descriptionTitle {
+  text-align: left;
+}
+.descriptionContent {
+  padding: 1rem;
+}
+
+.otherImages {
+  display: flex;
+  margin-left: 5rem;
+}
+.counter {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+}
+.counter .btn {
+  text-align: center;
+}
+.counter p {
+  position: absolute;
+  top: 2.2rem;
+  left: 9.7rem;
+}
+.reviewCardClass {
+  padding: 2rem;
+}
+.rev p {
+  padding: 0.3rem;
+}
+
+@media screen and (max-width: 640px) {
+  .detail h2 {
+    margin-left: 1rem;
+    font-size: 2rem;
+  }
+  a .btn {
+    margin-left: 1rem;
+    width: 10rem;
+  }
+  .cardClass {
     width: 100%;
-    padding: 0.5rem 1rem;
-    /* text-align: center; */
-}
-.cartBtn:hover{
-    background-color: white;
-    color: black;
-    border: none;
-}
-.descriptionTitle{
-    text-align: center;
-}
-.descriptionContent{
-    padding: 1rem;
-}
-
-.otherImages{
     display: flex;
-    margin-left: 5rem;
-}
- .counter{
-    display: flex;
-    gap: 1rem;
-    position: relative;
-} 
-.counter .btn{
-    text-align: center;
-} 
-.counter p{
+    flex-direction: column;
+  }
+  .images .main-image {
+    width: 90%;
+    height: 15rem;
+    margin-top: 2.5rem;
+  }
+  .main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .otherImages {
+    margin: 0;
+  }
+  .review {
+    width: 100%;
+  }
+  .reviewCardClass {
+    width: 95%;
+  }
+  .content {
+    margin-top: 3rem;
+    width: 95%;
+  }
+  .brand {
     position: absolute;
-    top: 2.2rem;
-    left: 9.7rem;
-}
-.reviewCardClass{
-    padding: 2rem;
-}
-.rev p{
-    padding: 0.3rem;
+    top: 1rem;
+    left: 0;
+  }
+  .cardClass2 {
+    width: 100%;
+    padding: 1.5rem;
+  }
+  .descriptionContent {
+    width: 100%;
+    padding: 1.5rem;
+  }
+  .counter p {
+    font-size: 2rem;
+    position: absolute;
+    top: 1.5rem;
+    left: 7.6rem;
+  }
 }

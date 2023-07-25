@@ -58,3 +58,31 @@
 .checkout-summary .item h4{
     margin-bottom: 1rem;
 }
+
+
+@media screen and (max-width:640px){
+    .container{
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 2rem;
+    } 
+    .checkout-details{
+        width: 100%;
+    }
+    .checkout-details > h2{
+        text-align: center;
+    }
+    .action{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .checkout-summary{
+        width: 100%;
+        padding: 1.5rem;
+    }
+    .lead{
+        padding: 2rem;
+        text-align: left;
+    }  
+}

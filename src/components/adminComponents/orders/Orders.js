@@ -3,9 +3,8 @@ import { useEffect, useState } from "react";
 import { db } from "../../../firebase/Config";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { ordersAction } from "../../../store";
-
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -17,10 +16,9 @@ const Orders = () => {
     getOrders();
   }, []);
 
-
-  const orderStatusHandler =(id)=>{
-    navigate(`/admin/orders/${id}`)
-  }
+  const orderStatusHandler = (id) => {
+    navigate(`/admin/orders/${id}`);
+  };
 
   const getOrders = () => {
     setIsLoading(true);
@@ -35,10 +33,17 @@ const Orders = () => {
           ...doc.data(),
         }));
         setOrders(allOrders);
-        dispatch(ordersAction.ADDORDERS_TO_STORE({orders:allOrders.map((order)=>({
-          ...order,
-          createdAt: new Date(order.createdAt.seconds*1000).toDateString()
-        }))}))
+        console.log(allOrders)
+        dispatch(
+          ordersAction.ADDORDERS_TO_STORE({
+            orders: allOrders.map((order) => ({
+              ...order,
+              createdAt: new Date(
+                order.createdAt.seconds * 1000
+              ).toDateString(),
+            })),
+          })
+        );
       });
       setIsLoading(false);
     } catch (error) {
@@ -46,9 +51,12 @@ const Orders = () => {
     }
   };
 
-    //console.log(orders)
+  //console.log(orders)
   return (
-    <div className="table">
+    <div
+      className="table"
+      style={{ width: "100%", maxWidth: "50rem", margin: "2rem auto" }}>
+        
       <h2>Total Orders</h2>
       {isLoading ? (
         <p>Fetching Orders...</p>
@@ -63,29 +71,39 @@ const Orders = () => {
                   <th>s/n</th>
                   <th>Date</th>
                   <th>User ID</th>
-                  <th>F_Name</th>
-                  <th>S_Name</th>
+                  <th>Name</th>
                   <th>OrderID</th>
+                  <th>Reference</th>
                   <th>Order Amount</th>
                   <th>Order Status</th>
                 </tr>
               </thead>
               <tbody className="table-tbody">
                 {orders.map((order, index) => {
-                  const {orderedDate, cartItemAmount,userId, userFirstName,userSurname, orderStatus } = order;
+                  const {
+                    orderedDate,
+                    cartItemAmount,
+                    userId,
+                    userFirstName,
+                    userSurname,
+                    orderStatus,
+                    transactionRef,
+                  } = order;
                   return (
-                    <tr key={order.id} onClick={()=>orderStatusHandler(order.id)}>
+                    <tr
+                      key={order.id}
+                      onClick={() => orderStatusHandler(order.id)}>
                       <td className="table-td">{index + 1}</td>
                       <td>{orderedDate}</td>
                       <td>{userId}</td>
-                      <td>{userFirstName}</td>
-                      <td>{userSurname}</td>
+                      <td>{userFirstName} {userSurname}</td>
                       <td>{order.id}</td>
+                      <td>{transactionRef}</td>
                       <td>{cartItemAmount}</td>
                       <td>{orderStatus}</td>
                     </tr>
                   );
-                })} 
+                })}
               </tbody>
             </table>
           )}

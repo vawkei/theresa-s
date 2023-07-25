@@ -109,7 +109,9 @@ const ProductDetail = () => {
     getReviews();
   }, []);
   return (
-    <div className={classes.detail}>
+    <div
+      className={classes.detail}
+      style={{ width: "100%", maxWidth: "60rem", margin: "10rem auto" }}>
       <h2>Product detail</h2>
       {isLoading && <p>Loading...</p>}
       <Link to={"/shop-now"}>
@@ -118,7 +120,7 @@ const ProductDetail = () => {
 
       <Card className={classes.cardClass}>
         <div className={classes.images}>
-          <div>
+          <div className={classes["main-image"]}>
             <img src={product.imageUrl} alt="" />
           </div>
 
@@ -131,7 +133,7 @@ const ProductDetail = () => {
             <Card className={classes.reviewCardClass}>
               <h2>Product Review</h2>
               <hr />
-              {filteredReview.length >0 ? (
+              {filteredReview.length > 0 ? (
                 <Fragment>
                   {filteredReview.map((rev) => {
                     const {
@@ -169,7 +171,7 @@ const ProductDetail = () => {
           </div>
           <div className={classes.brand}>
             <h4>Brand :</h4>
-            <b>{product.brand}</b> <p>| Similar Products from brand</p>
+            <b>{product.brand}</b>
           </div>
           <div>
             <h2>

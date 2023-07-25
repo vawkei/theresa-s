@@ -2,7 +2,7 @@ import { Fragment, useEffect, useState } from "react";
 import classes from "./Orders.module.css";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../../../firebase/Config";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ordersAction } from "../../../store";
 import { useNavigate } from "react-router-dom";
 
@@ -13,18 +13,17 @@ const OrdersHistory = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const userID = useSelector((state)=>state.auth.userID);
+  const userID = useSelector((state) => state.auth.userID);
 
-  const orderDetailsHandler =(id)=>{
-    navigate(`/orders/${id}`)
-  }
+  const orderDetailsHandler = (id) => {
+    navigate(`/orders/${id}`);
+  };
 
   useEffect(() => {
     getOrders();
   }, []);
 
-
-  const filteredOrders = orders.filter((x)=>x.userId === userID);
+  const filteredOrders = orders.filter((x) => x.userId === userID);
   //console.log(filteredOrders)
 
   //Getting our Orders from Firebase:
@@ -47,7 +46,9 @@ const OrdersHistory = () => {
           ordersAction.ADDORDERS_TO_STORE({
             orders: allOrders.map((order) => ({
               ...order,
-              createdAt: new Date(order.createdAt.seconds * 1000).toDateString(),
+              createdAt: new Date(
+                order.createdAt.seconds * 1000
+              ).toDateString(),
               editedAt: new Date(order.createdAt.seconds * 1000).toDateString(),
             })),
           })
@@ -62,7 +63,9 @@ const OrdersHistory = () => {
   };
 
   return (
-    <div className={classes.table}>
+    <div
+      className={classes.table}>
+        
       <h2>Your Order History</h2>
       {isLoading ? (
         <p>Fetching Orders...</p>
@@ -95,6 +98,7 @@ const OrdersHistory = () => {
                     <th>s/n</th>
                     <th>Order Date</th>
                     <th>orderId</th>
+                    <th>Reference</th>
                     <th>Order Amount</th>
                     <th>Order Status</th>
                   </tr>
@@ -104,10 +108,13 @@ const OrdersHistory = () => {
                   {filteredOrders.map((order, index) => {
                     // const {date,orderid,orderAmount,orderStatus} =order;
                     return (
-                      <tr key={order.id} onClick={()=>orderDetailsHandler(order.id)}>
+                      <tr
+                        key={order.id}
+                        onClick={() => orderDetailsHandler(order.id)}>
                         <td>{index + 1}</td>
                         <td>{`${order.orderedDate} at${order.orderedTime} `}</td>
                         <td>{order.id}</td>
+                        <td>{order.transactionRef}</td>
                         <td>
                           {nairaSymbol}
                           {order.cartItemAmount.toLocaleString()}

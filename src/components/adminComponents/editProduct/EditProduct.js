@@ -1,5 +1,6 @@
-//0RIGINAL
 
+
+//0RIGINAL
 //A little note: Here I first got my productEdit from the redux store on line29. It works fine, but when you try to refresh it throws an error. because its from  the redux store.
 
 // import classes from "./EditProduct.module.css";
@@ -518,7 +519,7 @@ const EditProduct = () => {
   };
 
   return (
-    <div>
+    <div style={{ width: "100%", maxWidth: "50rem", margin: "2rem auto" }}>
       {isLoading && <Loader />}
       <h2>Edit Product</h2>
       <Card className={classes.card}>

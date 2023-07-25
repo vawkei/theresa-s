@@ -13,16 +13,18 @@ import {
 } from "firebase/firestore";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { AiFillEdit } from "react-icons/ai";
-import { productsActions } from "../../../store/index";
-import { useDispatch } from "react-redux";
+import { filterActions, productsActions } from "../../../store/index";
+import { useDispatch, useSelector } from "react-redux";
 import DeleteNotifier from "../../ui/deleteNotifier/DeleteNotifier";
 import { deleteObject, ref } from "firebase/storage";
+import Pagination from "../../ui/pagination/Pagination";
 
 const ViewProducts = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [showDeleteNotifier, setShowDeleteNotifier] = useState(false);
+  var nairaSymbol = "\u20A6";
 
   const searchChangeHandler = (e) => {
     setSearch(e.target.value);
@@ -40,6 +42,19 @@ const ViewProducts = () => {
   useEffect(() => {
     getProducts();
   }, []);
+
+  useEffect(() => {
+    dispatch(
+      filterActions.FILTERPRODUCT_BY_SEARCH({
+        products: products.map((product) => ({
+          ...product,
+          createdAt: new Date(product.createdAt.seconds * 1000).toDateString(),
+          editedAt: new Date(product.createdAt.seconds * 1000).toDateString(),
+        })),
+        search: search,
+      })
+    );
+  }, [dispatch, products, search]);
 
   //GET PRODUCTS FROM FIRESTORE DATABASE STARTS HERE
   const getProducts = () => {
@@ -93,17 +108,43 @@ const ViewProducts = () => {
     }
   };
 
+  //Getting the filtered Products:
+  const filteredProducts = useSelector(
+    (state) => state.filter.filteredProducts
+  );
+  //console.log(filteredProducts);
+
+  //pagination stuff:
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
+
+  const indexLastItem = currentPage * itemsPerPage
+  const indexFirstItem = indexLastItem - itemsPerPage
+  const currentItem = filteredProducts.slice(indexFirstItem,indexLastItem)  
+
+  // style={{width: "100%", maxWidth: "60rem", margin: "10rem auto"}}
   return (
     <>
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <div className={classes.container}>
+        <div
+          className={classes.container}
+          style={{ width: "100%", maxWidth: "50rem", margin: "2rem auto" }}>
           <div className={classes.table}>
             <section>
               <h2>ViewProducts</h2>
-              <p><b>{products.length} products found</b></p>
+              <p>
+                {/* <b>{products.length} products found</b> */}
+                <b>{filteredProducts.length} products found</b>
+              </p>
               <div className={classes.search}>
+                <Pagination
+                  currentPage={currentPage}
+                  itemsPerPage={itemsPerPage}
+                  setCurrentPage = {setCurrentPage}
+                  filteredProducts={filteredProducts}
+                />
                 <Search
                   value={search}
                   onChange={searchChangeHandler}
@@ -112,7 +153,14 @@ const ViewProducts = () => {
               </div>
             </section>
 
-            <table>
+            <table
+              style={{
+                padding: "1rem",
+                width: "100%",
+                fontSize: "1.4rem",
+                borderCollapse: "collapse",
+                width: "100%",
+              }}>
               <thead>
                 <tr>
                   <th>s/n</th>
@@ -124,7 +172,9 @@ const ViewProducts = () => {
                 </tr>
               </thead>
               <tbody>
-                {products.map((product, index) => {
+                {currentItem.map((product, index) => {
+                // {filteredProducts.map((product, index) => {
+                  // {products.map((product, index) => {
                   return (
                     <tr key={product.id}>
                       <td>{index + 1}</td>
@@ -137,7 +187,10 @@ const ViewProducts = () => {
                       </td>
                       <td>{product.name}</td>
                       <td>{product.category}</td>
-                      <td>{product.price}</td>
+                      <td>
+                        {nairaSymbol}
+                        {product.price.toLocaleString()}
+                      </td>
                       <td>
                         {/* <Link to={`/admin/add-product/${product.id}`}> */}
                         <Link to={`/admin/edit-product/${product.id}`}>

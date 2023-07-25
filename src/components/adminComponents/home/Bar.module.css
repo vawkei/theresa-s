@@ -1,5 +1,22 @@
-.cardClass{
+.chart1{
+    width: 50%;
+    height: 100%;
+}
+.chart2{
+    width: 50%;
+    height: 100%;
+}
+.cardClass1{
     position: relative;
-    padding: 2rem;
+     padding: 0.5rem;
     border-width: 1px;
+    width: 100%;
+    height: 100%; 
+}
+.cardClass2{
+    position: relative; 
+    padding: 0.5rem;
+    border-width: 1px;
+    width: 100%;
+    height: 100%;
 }

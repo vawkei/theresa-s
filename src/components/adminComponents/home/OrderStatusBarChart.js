@@ -55,9 +55,9 @@ const OrderStatusBarChart = (props) => {
 
 
     return ( 
-        <div>
+        <div className={classes.chart1}>
             <h2>Order Status BarChart</h2>
-            <Card className={classes.cardClass}>
+            <Card className={classes.cardClass2}>
                 <Bar  data={data} options={options} />
             </Card>
         </div>

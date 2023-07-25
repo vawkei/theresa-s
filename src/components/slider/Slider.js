@@ -51,7 +51,7 @@ const Slider = () => {
         return (
           <div
             key={index}
-            className={index === currentSlide ? `${classes.slide}` : ""}>
+            className={index === currentSlide ? `${classes.slide}` : ""} >
             {index === currentSlide && (
               <div className={classes.slideFirstDiv}>
                 <img src={slide.image} />

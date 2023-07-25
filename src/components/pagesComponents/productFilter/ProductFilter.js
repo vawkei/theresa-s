@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { filterActions } from "../../../store";
 
 
-const ProductFilter = () => {
+const ProductFilter = (props) => {
   const [category, setCategory] = useState("ALL");
   const [brand, setBrand] = useState("ALL");
 
@@ -74,8 +74,8 @@ const ProductFilter = () => {
 
   return (
     <Fragment>
-      <div className={classes.filter}>
-        <div className={classes.category}>
+      <div className={classes.filterComp}>
+        <div className={classes.category} onClick={props.filterToggleHandler}>
           <h4>Categories</h4>
           {allCategories.map((cat, index) => {
             return (

@@ -43,8 +43,19 @@ const OrderDetail = () => {
     }
   };
 
+   
+  const shortenText = (text,n)=>{
+    if(text.length > n){
+     const shortenedText = text.substring(0,n).concat("...");
+      return  shortenedText
+    };
+    return text
+  }
+
+
   return (
-    <div className={classes.order}>
+    <div className={classes.order} >
+
       {/* <h2>Order Detail</h2> */}
       {isLoading && <p>Fetching Order...</p>}
       {order === "" ? (
@@ -59,6 +70,7 @@ const OrderDetail = () => {
               <Card className={classes.cardClass} key={id}>
                 <div className={classes.image}>
                   <img src={imageUrl} alt={name} style={{ width: "100px" }} />
+                  {/* <div className={classes.name}>{ shortenText ({name},15) }</div> */}
                   <div className={classes.name}>{name}</div>
                 </div>
 

@@ -1,11 +1,64 @@
 .shop{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    position: relative;
     
 }
 .shop aside{
     width: 15%;
 }
-.shop div{
+/* .shop div{
+    width: 85%;
+} */
+.productList{
+    margin: 0 auto;
     width: 85%;
 }
+
+.filterToggle{
+    background-color: red;
+    color: yellow;
+    
+}
+
+
+
+
+@media screen and (max-width: 640px){
+
+    .shop aside{
+        width: 40%;
+    }
+
+    .productList{
+        margin: 0 auto;
+        width: 60%;
+    }
+
+     .filter{
+        /* margin-top: 5rem; */
+        left: -200%;
+        margin-left: 0;
+        position: absolute;
+        width: 50%;
+        background-color: black;
+        border-radius: 12px;
+        height: 100%;
+        z-index: 500;
+        padding: 1rem;
+        color: white;
+        /* transform: translateX(0); */
+        /* transition-duration: 1s; */
+    }
+   .shop .backdrop{
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.7);
+        width: 100%;
+        height: 100%;
+        z-index: 200;
+    }
+    .showFilter{
+        left: 0;
+    }
+
+}                   

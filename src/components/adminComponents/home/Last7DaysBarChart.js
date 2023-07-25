@@ -57,7 +57,7 @@ const Last7DaysBarChart = (props) => {
   //console.log(day4.toDateString())
 
   const day5 = new Date();
-  day5.setDate(day5.getDate() - 4);
+  day5.setDate(day5.getDate() - 5);
   //console.log(day5.toDateString())
 
   //Get orders:
@@ -100,10 +100,10 @@ const Last7DaysBarChart = (props) => {
 
 
   return (
-    <div>
+    <div className={classes.chart2}>
       <h2>Last 7 Days BarChart</h2>
-      <Card className={classes.cardClass}>
-          <Bar   data={data} options={options}/>
+      <Card className={classes.cardClass1}>
+          <Bar className={classes.bar}  data={data} options={options}/>
       </Card>
     </div>
   );

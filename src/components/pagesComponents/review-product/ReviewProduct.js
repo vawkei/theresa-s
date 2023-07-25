@@ -7,6 +7,8 @@ import Card from "../../ui/card/Card";
 import StarsRating from "react-star-rate";
 import Button from "../../ui/button/Button";
 import { useSelector } from "react-redux";
+import Notifier from "../../ui/notifier/Notifier";
+
 
 const ReviewProduct = () => {
   const [product, setProduct] = useState("");
@@ -17,10 +19,27 @@ const ReviewProduct = () => {
 
   const userID = useSelector((state) => state.auth.userID);
   const userName = useSelector((state) => state.auth.userName);
+  const [notifier,setNotifier] = useState("");
+
 
   useEffect(() => {
     getSingleProduct();
   }, []);
+
+let timeDuration = 5000;
+let notifierClearer;
+
+  useEffect(()=>{
+    if(notifier){
+      notifierClearer = setInterval(function(){
+        setNotifier("");
+      },timeDuration)
+    }
+    return ()=>{
+      clearInterval(notifierClearer)
+    }
+  },[notifier]);
+
 
   const getSingleProduct = async () => {
     setIsLoading(true);
@@ -68,18 +87,23 @@ const ReviewProduct = () => {
         review: review,
         reviewDate: date,
         reviewTime: time,
-        createdAt: Timestamp.now().toDate()
+        createdAt: Timestamp.now().toDate(),
       });
       setRating(0);
       setReview("");
-      setIsLoading(false)
+      setIsLoading(false);
+      setNotifier({
+        title:"Success",
+        message:"Review sent..."
+      });
     } catch (error) {
-        console.log(error)
-    };
-  };
+      console.log(error);
+    }
+  }
 
   return (
     <div className={classes.review}>
+      {notifier && <Notifier title={notifier.title} message={notifier.message} />}
       {isLoading ? (
         <p>Loading...</p>
       ) : (
@@ -91,9 +115,10 @@ const ReviewProduct = () => {
                 <img
                   src={product.imageUrl}
                   alt={product.name}
-                  style={{ width: "20rem" }}
+                  style={{ width: "15rem" }}
                 />
               </div>
+
               <div className={classes.right}>
                 <h4>{product.name}</h4>
                 <p>Rating:</p>
@@ -106,7 +131,9 @@ const ReviewProduct = () => {
                   rows="5"
                   value={review}
                   onChange={(e) => setReview(e.target.value)}></textarea>
-                <Button className={classes.btn}>Submit</Button>
+                <div className={classes.action}>
+                  <Button className={classes.btn}>Submit</Button>
+                </div>
               </div>
             </Card>
           </form>

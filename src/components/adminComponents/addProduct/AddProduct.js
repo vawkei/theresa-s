@@ -371,7 +371,7 @@ const AddProduct = () => {
 
   return (
     
-    <div>
+    <div style={{ width: "100%", maxWidth: "50rem", margin: "2rem auto" }}>
       {isLoading && <Loader />}
       <h2>Add Product</h2>
       <Card className={classes.card}>

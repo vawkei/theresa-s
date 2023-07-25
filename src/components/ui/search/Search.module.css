@@ -5,3 +5,9 @@
     padding: 0.5rem 2.5rem;
     font: inherit;
 }
+
+@media screen and (max-width:600px){
+    .search input{
+        width: 15rem;
+    }
+}

@@ -18,6 +18,7 @@ table:hover{
 }
 table{
     padding: 1rem;
+    border-collapse: collapse;
 }
 table th{
     text-align: center;
