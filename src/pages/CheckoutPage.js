@@ -4,7 +4,7 @@ const CheckoutPage = () => {
     return ( 
         <div >
             {/* style={{ width: "100%", maxWidth: "60rem", margin: "10rem auto" }} */}
-            <h2>CheckoutPage Baby!!!</h2>
+            {/* <h2>CheckoutPage Baby!!!</h2> */}
             <Checkout />
         </div>
      );

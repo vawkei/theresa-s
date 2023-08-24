@@ -5,7 +5,7 @@ const HomePage = () => {
     return ( 
         <div >
             {/* style={{width: "100%", maxWidth: "60rem", margin: "10rem auto"}} id="productsSlider" */}
-            <h2>HomePage</h2>
+            <h2  style={{textAlign:"center"}}>HomePage</h2>
             <Home />
         </div>
      );

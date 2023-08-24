@@ -1,7 +1,6 @@
 import classes from "./MainNavigation.module.css";
-import { Link } from "react-router-dom";
+import {NavLink, Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
-import Search from "../ui/search/Search";
 import { useState, useEffect } from "react";
 import DrawerToggleButton from "../ui/drawerToggleButton/DrawerToggleButton";
 import { onAuthStateChanged, signOut } from "firebase/auth";
@@ -14,7 +13,6 @@ import { AdminOnlyLink } from "../adminOnlyRoute/AdminOnlyRoute";
 
 
 const MainNavigation = () => {
-  // const [search, setSearch] = useState("");
   const [showNav, setShowNav] = useState(false);
   const [displayName, setDisplayName] = useState("");
   const [notifier, setNotifier] = useState("");
@@ -22,12 +20,15 @@ const MainNavigation = () => {
   const cartTotalQty = useSelector((state)=>state.cart.cartTotalQty)
 
 
+
+  const navLinkHandler = (navLinkData)=>{
+    return navLinkData.isActive ? classes.active : ""
+  };
+
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
-  // const searchChangeHandler = (e) => {
-  //   setSearch(e.target.value);
-  // };
+  
   const toggleHandler = () => {
     setShowNav((prev) => !prev);
   };
@@ -45,12 +46,12 @@ const MainNavigation = () => {
 
   const cart = (
     <div className={classes.cart}>
-      <Link to={"/cart"}>
+      <NavLink to={"/cart"} className={navLinkHandler}>
         {" "}
         <p>Cart</p>
         <FaShoppingCart size={20} />
         <p>{cartTotalQty}</p>
-      </Link>
+      </NavLink>
     </div>
   );
 
@@ -137,13 +138,6 @@ const MainNavigation = () => {
       )}
 
       <header>{logo}</header>
-      {/* <span className={classes.search}>
-        <Search
-          value={search}
-          onChange={searchChangeHandler}
-          placeholder={"Search products, brands and categories"}
-        />
-      </span> */}
 
       <a href="">{displayName}</a>
 
@@ -165,30 +159,30 @@ const MainNavigation = () => {
           
           <AdminOnlyLink>
             <li className={classes.admin}>
-              <Link to={'/admin/home'}>Admin</Link>
+              <NavLink to={'/admin/home'} className={navLinkHandler}>Admin</NavLink>
             </li>
           </AdminOnlyLink>
 
           <li className={classes['shop-now']}>
-              <Link to={'/shop-now'}>Shop Now</Link>
+              <NavLink to={'/shop-now'} className={navLinkHandler}>Shop Now</NavLink>
             </li>
           <li>
-            <Link to={"/contact"}>Contact</Link>
+            <NavLink to={"/contact"} className={navLinkHandler}>Contact</NavLink>
           </li>
 
-          <li>
-            <Link to={"/register"}>Register</Link>
-          </li>
+          {!isLoggedIn &&<li>
+            <NavLink to={"/register"} className={navLinkHandler}>Register</NavLink>
+          </li>}
 
           {isLoggedIn && (
             <li>
-              <Link to={"/profile"}>Profile</Link>
+              <NavLink to={"/profile"} className={navLinkHandler}>Profile</NavLink>
             </li>
           )}
 
           {isLoggedIn && (
             <li>
-              <Link to={"/orders"}>Orders</Link>
+              <NavLink to={"/orders"} className={navLinkHandler}>Orders</NavLink>
             </li>
           )}
 

@@ -167,7 +167,7 @@ const ContactForm = () => {
               rows={"5"}
               type={"text"}
               ref={messageInputRef}
-              name="message"></textarea>
+              name="user_message"></textarea>
             {!formValidity.message && <p>Please drop a message</p>}
           </div>
           <div className={classes.action}>

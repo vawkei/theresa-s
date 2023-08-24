@@ -69,7 +69,17 @@ a:hover {
   display: none;
 }
 
+.active{
+  color: red;
+}
 
+@media screen and (min-width:640px) and (max-width:1024px){
+
+  .header li a {
+    font-size: 1rem;
+  }
+  
+}
 
 
 @media screen and (max-width: 640px) {
@@ -136,7 +146,9 @@ a:hover {
   gap: 1.5rem;
 }
 
-}
+};
+
+
 
 
 

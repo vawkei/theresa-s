@@ -38,3 +38,26 @@ padding: 1rem;
     margin-bottom: 1rem;
 }
 
+@media screen and (min-width:640px) and (max-width:1024px){
+    .modal{
+    
+        background-color: white;
+        z-index: 300;
+        width: 30rem;
+        position: fixed;
+        top: 30%;
+        left: 20%;
+    }   
+}
+
+@media screen and (max-width:640px){
+    .modal{
+    
+        background-color: white;
+        z-index: 300;
+        width: 20rem;
+        position: fixed;
+        top: 30%;
+        left: 9%;
+    }   
+}

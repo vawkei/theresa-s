@@ -55,25 +55,83 @@
   display: flex;
   margin-left: 5rem;
 }
-.counter {
+/* .counter {
   display: flex;
   gap: 1rem;
   position: relative;
+} */
+.counter {
+  display: flex;
+  align-items: center;
 }
+
+.counter > * {
+  margin-right: 1rem;
+  margin-top: 1rem;
+  /*This adds a right margin of 1rem{right & top} to the direct children of counter. */
+}
+
 .counter .btn {
   text-align: center;
 }
-.counter p {
+/* .counter p {
   position: absolute;
   top: 2.2rem;
   left: 9.7rem;
-}
+} */
 .reviewCardClass {
   padding: 2rem;
 }
 .rev p {
   padding: 0.3rem;
 }
+
+@media screen and (min-width:640px) and (max-width:1024px){
+  .detail{
+    overflow-x: hidden;
+  }
+  .detail h2 {
+    margin-left: 5rem;
+    font-size: 2rem;
+  }
+  a .btn {
+    margin-left: 5rem;
+    width: 10rem;
+  }
+  .cardClass {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3rem;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .content{
+    margin-top: 3rem;
+  }
+  .content h2{
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+  }
+  .brand{
+    display: flex;
+    justify-content: center;
+  }
+  .brand h2,b{
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  .cardClass2 {
+    width: 100%;
+    margin-left: 3rem;
+  }
+  .cardClass2 p{
+    font-size: 1.5rem;
+  }
+}
+
 
 @media screen and (max-width: 640px) {
   .detail h2 {
@@ -91,16 +149,18 @@
   }
   .images .main-image {
     width: 90%;
-    height: 15rem;
+    /* height: 15rem; */
+    height: 25rem;
+    margin-left: 0rem;
     margin-top: 2.5rem;
   }
   .main-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    /* object-fit: cover; */
   }
   .otherImages {
-    margin: 0;
+    margin: 2rem 0;
   }
   .review {
     width: 100%;
@@ -115,7 +175,7 @@
   .brand {
     position: absolute;
     top: 1rem;
-    left: 0;
+    left: 2rem;
   }
   .cardClass2 {
     width: 100%;
@@ -125,10 +185,14 @@
     width: 100%;
     padding: 1.5rem;
   }
-  .counter p {
+  /* .counter p {
     font-size: 2rem;
     position: absolute;
     top: 1.5rem;
     left: 7.6rem;
+  } */
+  .counter p {
+    font-size: 1rem;
+    
   }
 }

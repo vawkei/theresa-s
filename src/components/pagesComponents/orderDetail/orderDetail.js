@@ -57,9 +57,9 @@ const OrderDetail = () => {
     <div className={classes.order} >
 
       {/* <h2>Order Detail</h2> */}
-      {isLoading && <p>Fetching Order...</p>}
+      {isLoading && <p style={{marginLeft:"6rem"}}>Fetching Order...</p>}
       {order === "" ? (
-        <p>No Order Yet...</p>
+        <p style={{marginLeft:"6rem"}}>No Order Yet...</p>
       ) : (
         <Fragment>
           <h2> Order ID: {order.id}</h2>
