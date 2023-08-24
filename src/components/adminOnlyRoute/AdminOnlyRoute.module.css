@@ -1,0 +1,22 @@
+.disclaimer{
+    margin: 15rem;
+    text-align: center;
+}
+.action{
+    text-align: center;
+}
+.btn{
+    width: 16rem;
+    transition: 3s;
+}
+.btn:hover{
+    background-color: white;
+    color: black;
+}
+
+
+@media screen and (max-width:640px){
+    .disclaimer{
+        margin: 10rem auto;
+    }
+}

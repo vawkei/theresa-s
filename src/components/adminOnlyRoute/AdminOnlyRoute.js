@@ -1,6 +1,8 @@
+import classes from "./AdminOnlyRoute.module.css";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-//import Button from "../ui/button/Button";
+
+import Button from "../ui/button/Button";
 
 const AdminOnlyRoute = (props) => {
   const navigate = useNavigate();
@@ -14,12 +16,12 @@ const AdminOnlyRoute = (props) => {
 
   if (
     userEmail === process.env.REACT_APP_USER_EMAIL_ADDRESS &&
-    userPassword === process.env.REACT_APP_USER_PASSWORD 
+    userPassword === process.env.REACT_APP_USER_PASSWORD
   ) {
     return props.children;
   } else {
     return (
-      <div>
+      <div className={classes.disclaimer}>
         {/* style={{
           margin: "10rem auto",
           padding: "2rem",
@@ -28,7 +30,9 @@ const AdminOnlyRoute = (props) => {
           textAlign: "center",
         }} */}
         <p>You are not allowed to view the Admin Section</p>
-        <button onClick={navigateHandler}>Click here to go back Home</button>
+        <div className={classes.action}>
+          <Button onClick={navigateHandler} className={classes.btn}>Click here to go back Home</Button>
+        </div>
       </div>
     );
   }
@@ -40,8 +44,8 @@ export const AdminOnlyLink = (props) => {
 
   if (
     userEmail === process.env.REACT_APP_USER_EMAIL_ADDRESS &&
-    userPassword === process.env.REACT_APP_USER_PASSWORD 
-  ) {                         
+    userPassword === process.env.REACT_APP_USER_PASSWORD
+  ) {
     return props.children;
   } else {
     return null;
