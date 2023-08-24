@@ -16,3 +16,12 @@
     background-color: white;
     border: none;
 }
+
+@media screen and (min-width:640px) and (max-width:1024px){
+    .content{
+        margin-top: 20rem;
+    }
+    .content p{
+        font-size: 1.5rem;
+    }
+}

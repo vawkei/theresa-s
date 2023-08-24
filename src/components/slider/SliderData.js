@@ -11,9 +11,10 @@ export const SliderData = [
 
     },
     {
-        heading: "Classy Ladies' Hand bag",
-        image:  'https://i.ibb.co/7vX80gT/Ladies-Hand-Bag.jpg',
-        desc: 'A fashionable leather bag for women, suitable for all occasions'
+        heading: "All Star Converse",
+        image:  'https://i.ibb.co/QmvwKQW/p24-2.png',
+        // image:  'https://i.ibb.co/7vX80gT/Ladies-Hand-Bag.jpg',
+        desc: 'A fashionable canvas for both boys and girls, suitable for all occasions'
     },
     {
         heading: 'Fifa 23',

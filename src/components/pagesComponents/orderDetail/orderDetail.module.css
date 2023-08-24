@@ -20,6 +20,42 @@
 .btn:hover {
   border: none;
 }
+/* .image {
+  width: 15rem;
+}
+.image img{
+  width: 100%;
+} */
+
+
+
+@media screen and (min-width:640px) and (max-width:1020px){
+  .cardClass {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50rem;
+    margin: 6rem auto;
+  }
+  .order h2{
+    margin-left: 6rem;
+  }
+  .right {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    margin: 0;
+  }
+  .right h2{
+    margin-left: 0;
+  }
+  .action{
+    margin-top: -2rem;
+  }
+  
+  
+}
 
 @media screen and (max-width: 640px) {
 

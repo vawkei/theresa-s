@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 import Notifier from "../../ui/notifier/Notifier";
 import { AiOutlineEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
-import { cartActions } from "../../../store";
+
 import { useSelector } from "react-redux";
 
 
@@ -118,7 +118,6 @@ const AuthForm = () => {
           setConfirmEnteredPassword("");
         })
         .catch((error) => {
-          const errorCode = error.code;
           const errorMessage = error.message;
           //console.log(errorMessage);
           let x = errorMessage.split(":");
@@ -161,7 +160,6 @@ const AuthForm = () => {
           
         })
         .catch((error) => {
-          const errorCode = error.code;
           const errorMessage = error.message;
           console.log(errorMessage);
           let x = errorMessage.split(":");
@@ -194,7 +192,6 @@ const AuthForm = () => {
       })
       .catch((error) => {
         // Handle Errors here.
-        const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage);
         setIsLoading(false);

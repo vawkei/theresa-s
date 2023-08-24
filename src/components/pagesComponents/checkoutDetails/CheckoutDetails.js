@@ -1,11 +1,11 @@
-import { useState, useRef, useEffect, Fragment } from "react";
+import { useState, useRef, Fragment } from "react";
 import Button from "../../ui/button/Button";
 import Card from "../../ui/card/Card";
 import classes from "./CheckoutDetails.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { cartActions, checkoutActions } from "../../../store";
-import { useNavigate } from "react-router-dom";
-import Notifier from "../../ui/notifier/Notifier";
+import { cartActions } from "../../../store";
+
+
 
 const CheckoutDetails = (props) => {
   const [formValidity, setFormValidity] = useState({
@@ -29,7 +29,7 @@ const CheckoutDetails = (props) => {
   const cartTotalQty = useSelector((state) => state.cart.cartTotalQty);
   const cartTotalAmnt = useSelector((state) => state.cart.cartTotalAmnt);
   var nairaSymbol = "\u20A6";
-  const navigate = useNavigate();
+  
 
   const confirmHandler = (e) => {
     e.preventDefault();
@@ -206,7 +206,7 @@ const CheckoutDetails = (props) => {
               {cartItems.map((item, index) => {
                 return (
                   <div key={item.id} className={classes.item}>
-                    <h4>{item.name}</h4>
+                    <h4><b> {item.name} </b></h4>
                     <p>
                       <b> {`Quantity:${item.quantity}`} </b>
                     </p>

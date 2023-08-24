@@ -62,7 +62,7 @@ const ShopNow = () => {
   return (
     <div>
       {isLoading ? (
-        <p>Fetching Products...</p>
+        <p style={{marginLeft:"5rem"}}>Fetching Products...</p>
       ) : (
         <div className={classes.shop}>
             

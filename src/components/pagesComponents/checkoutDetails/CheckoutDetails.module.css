@@ -60,6 +60,45 @@
 }
 
 
+@media screen and (min-width:640px) and (max-width:1024px){
+    .container{
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 2rem;
+        align-items: center;
+    }
+    .checkout-details > h2{
+        text-align: center;
+        margin-top: 2rem;
+    }
+    .control label{
+        font-size: 1.5rem;
+    }
+    .control input{
+        font: inherit;
+        font-size: 1.5rem;
+    }
+    .action{
+        display: flex;
+        justify-content: left;
+    }
+    .action .btn{
+        font-size: 1.5rem;
+    }
+    .checkout-summary{
+        width: 100%;
+        padding: 1.5rem;
+    }
+    .lead{
+        padding: 2rem;
+        text-align: left;
+    }
+    .itemCard{
+        padding: 1.5rem;
+    }
+}
+
+
 @media screen and (max-width:640px){
     .container{
         display: flex;
@@ -86,3 +125,4 @@
         text-align: left;
     }  
 }
+

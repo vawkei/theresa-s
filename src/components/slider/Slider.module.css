@@ -59,7 +59,49 @@
   color: green;
 }
 
-@media screen and (max-width: 700px) {
+/* MEDIA QUERY FOR TABLETS  */
+@media screen and (min-width:640px) and (max-width:1024px){
+  .slide {
+   width: 90%;
+   height: 100%;
+   position: absolute;
+   top: 0;
+   left: 0;
+   transition: all 0.5s ease;
+   transform: translateX(10%);
+ }
+ .prev {
+   position: absolute;
+   top: 15rem;
+   left: 0;
+   color: orange;
+ }
+ .next {
+   position: absolute;
+   top: 15rem;
+   right: 0;
+   color: green;
+ }
+ .slide img {
+   width: 80%;
+ }
+ .slideFirstDiv {
+   display: flex;
+   flex-direction: column;
+ }
+ .slideFirstDiv {
+   text-align: center;
+ }
+ .slideFirstDiv p {
+   text-align: left;
+   inline-size: 450px;
+   /* inline-size: 250px; */
+   font-size: 1.5rem;
+ } 
+ }
+
+
+@media screen and (max-width: 640px) {
   .slider {
     position: relative;
     width: 100%;

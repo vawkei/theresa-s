@@ -7,6 +7,14 @@
   display: flex;
   padding: 1rem;
   gap: 3rem;
+  
+}
+
+.image{
+  width: 45%;
+}
+.image img{
+  width: 100%;
 }
 
 .left {
@@ -26,16 +34,19 @@
   height: 5rem;
   margin-top: 10rem;
 }
-.counter {
+
+.counter{
   display: flex;
-  position: relative;
-  gap: 1.5rem;
+  align-items: center;
+  
 }
-.counter p {
-  position: absolute;
-  top: 2rem;
-  left: 10.5rem;
+.counter > * {
+  margin-right: 0.5rem;
+  margin-top: 1rem;
+  /*This adds a right margin of 1rem{right & top} to the direct children of counter. */
 }
+
+
 
 .clearcart-checkout {
   display: flex;
@@ -61,6 +72,32 @@
   color: red;
 }
 
+@media screen and (min-width:640px) and (max-width:1024px){
+  .image {
+    width: 100%;
+  }
+  .content p{
+    font-size: x-large;
+  }
+  .left{
+    margin-left: 5rem;
+  }
+  .right{
+     display: flex;
+    justify-content: flex-start;
+    gap: 3rem;
+  }
+  .trash{margin-left: 5rem;}
+  .btn, .counter p{
+    margin-left: 1rem;
+  }
+  
+  .btn{
+    font-size: 1.5rem;
+  }
+  
+}
+
 @media screen and (max-width: 640px) {
   .container {
     width: 100%;
@@ -75,6 +112,7 @@
     flex-direction: column;
     /* padding: 0rem; */
     gap: 0rem;
+    overflow-x: hidden;
   }
 
   .right {
@@ -82,14 +120,7 @@
     margin-top: 0;
   }
 
-  .counter{
-    position: relative;
-  }
-  .counter p{
-    position: absolute;
-    top: 2rem;
-    left: 5.3rem;
-  }
+
   .btn {
     width: 5rem;
   }
@@ -97,9 +128,54 @@
     position: static;
     margin-top: 2rem;
     width: 100%;
+    
   }
   .checkoutSummary{
     text-align: center;
     width: 100%;
+  
   }
 }
+
+
+/* @media screen and (min-width:410px) and (max-width:640px){ */
+@media screen and (min-width:640px) and (max-width:1200px){
+  
+  .container {
+    width: 100%;
+    overflow: scroll;
+  }
+  .container > p {
+    text-align: center;
+  }
+  .product {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    gap: 0rem;
+    overflow-x: hidden;
+  }
+
+  .right {
+    width: 100%;
+    margin-top: 0;
+  }
+
+
+  .btn {
+    width: 5rem;
+  }
+  .clearcart-checkout {
+    position: static;
+    margin-top: 2rem;
+    width: 100%;
+    
+  }
+  .checkoutSummary{
+    text-align: center;
+    width: 100%;
+  
+  }
+};
+

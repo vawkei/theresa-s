@@ -89,5 +89,11 @@ Was having some wierd issue. I have not experienced any issue like it before des
 
 Finished July 25, 2023.
 
+some stuffs noticed by Ese:
+1.When loggedin, Register shouldnt be showing in the header. {FIXED}
+2.When i submited an email, the message didnt show in my email box, but other stuffs concerning the mail showed.{FIXED}
 
+side suggestions:
+3.Generate invoice
+4.How many times a product has been viewed
 

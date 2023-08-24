@@ -14,7 +14,7 @@ const Checkout = () => {
         
       <div className={classes.content}>
         <h1>Checkout Successful</h1>
-        <p>Thanks for your patronage</p>
+        <p>Thanks for your patronage.</p>
       </div>
       <div className={classes.action}>
         <Button className={classes.btn} onClick={navigateHandler}>

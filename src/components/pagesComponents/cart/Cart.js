@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { cartActions } from "../../../store";
 import Button from "../../ui/button/Button";
 import Card from "../../ui/card/Card";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
@@ -57,19 +57,12 @@ function shortenText(text,n){
   };
   return text
 };
- // const shortenText = (text, n) => {
-  //   if (text.length > 15) {
-  //     const shortenedText = text.substring(0, 15).concat("...");
-  //     return shortenedText;
-  //   }
-  //   return text;
-  // };
-
+ 
 
   return (
     <Fragment>
       {cartItems.length === 0 ? (
-        <p>Cart is Freaken Empty</p>
+        <p style={{marginLeft:"6rem"}}>Cart is Freaken Empty</p>
       ) : (
         <div className={classes.container}>
           <p>
@@ -84,11 +77,11 @@ function shortenText(text,n){
                       <img
                         src={product.imageUrl}
                         alt={product.name}
-                        style={{ width: "10rem" }}
+                        // style={{ width: "10rem" }} always proves difficult to manipulate it, if u code your width here. do it in the css file.
                       />
                     </div>
                     <div className={classes.content}>
-                      <p>{shortenText(product.name,15)}</p>
+                      <p> <b> {shortenText(product.name,15)}</b></p>
                       <p>
                         <b>Price: </b> {nairaSymbol}
                         {product.price.toLocaleString()}
@@ -106,6 +99,7 @@ function shortenText(text,n){
                       <RiDeleteBin2Line
                         size={25}
                         color="red"
+                        className={classes.trash}
                         onClick={() => removeProductHandler(product)}
                       />
                     </div>

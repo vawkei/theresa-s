@@ -38,3 +38,35 @@ table tr:hover{
     color: blue;
 }
 
+@media screen and (min-width:640px) and (max-width:1024px){
+    .table{
+        width: 100%;
+        padding: 5px;
+        overflow-x: auto;
+        max-width: 40rem;
+        margin-left: 8rem;
+        font-size: 1.2rem;
+    }
+    .table h2{
+        margin-left: 0rem;
+    }
+    .lead{
+        margin-left: 0rem;
+    }   
+}
+
+
+@media screen and (max-width:640px){
+    .table{
+        width: 100%;
+        padding: 5px;
+        overflow-x: auto;
+        max-width: 40rem;
+    }
+    .table h2{
+        margin-left: 1rem;
+    }
+    .lead{
+        margin-left: 0;
+    }
+}
