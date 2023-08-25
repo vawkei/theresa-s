@@ -29,7 +29,8 @@
     .search {
         position: absolute;
         top: 3rem;
-        left: -10rem;
+        /* left: -10rem; */
+        left: -12rem;
     }
     .sort{
         position: absolute;
@@ -41,7 +42,8 @@
         padding: 0.5rem;
         position: absolute;  
         top: 3rem;
-        left: 6rem;
+        /* left: 6rem; */
+        left: 4rem;
         border-radius: 6px;
         z-index: 500;
     }

@@ -46,31 +46,6 @@ const ProductFilter = (props) => {
     dispatch(filterActions.FILTERPRODUCT_BY_CATEGORY({products,category:cat }));
   };
 
-  //DONT REALLY UNDERSTAND THIS,SO I COMMENTED IT OUT.
-  // useEffect(() => {
-  //   let temporaryProducts = [];
-
-  //   if (category === "ALL" && brand === "ALL") {
-  //     temporaryProducts = products;
-  //   } else if (category === "ALL") {
-  //     temporaryProducts = products.filter((product) => product.brand === brand);
-  //   } else if (brand === "ALL") {
-  //     temporaryProducts = products.filter(
-  //       (product) => product.category === category
-  //     );
-  //   } else {
-  //     temporaryProducts = products.filter(
-  //       (product) => product.category === category && product.brand === brand
-  //     );
-  //   }
-
-  //   dispatch(filterActions.SET_FILTERED_PRODUCTS(temporaryProducts));
-  // }, [dispatch, products, category, brand])
-
-  // const clearFilter = ()=>{
-  //   setBrand('ALL');
-  //   setCategory("ALL")
-  // }
 
   return (
     <Fragment>

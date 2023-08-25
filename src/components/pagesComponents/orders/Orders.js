@@ -4,7 +4,8 @@ import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../../../firebase/Config";
 import { useDispatch, useSelector } from "react-redux";
 import { ordersAction } from "../../../store";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Button from "../../ui/button/Button";
 
 const OrdersHistory = () => {
   const [orders, setOrders] = useState([]);
@@ -63,12 +64,13 @@ const OrdersHistory = () => {
   };
 
   return (
-    <div
-      className={classes.table}>
-        
+    <div className={classes.table}>
+      <Link to={"/"}>
+        <Button className={classes.btn}> &larr; Back home</Button>
+      </Link>
       <h2>Your Order History</h2>
       {isLoading ? (
-        <p>Fetching Orders...</p>
+        <p style={{ marginLeft: "6rem" }}>Fetching Orders...</p>
       ) : (
         <>
           {/* {orders.length === 0 ? ( */}

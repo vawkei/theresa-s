@@ -137,4 +137,11 @@
     right: 2rem;
     color: green;
   }
+  .btnContainer{
+    display: flex;
+    justify-content: start;
+  }
+  .btn {
+    width: 12rem;
+  }
 }

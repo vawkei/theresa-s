@@ -20,6 +20,10 @@
 .btn:hover {
   border: none;
 }
+.backBtn{
+  margin: 2rem 0rem;
+  width: 12rem;
+}
 /* .image {
   width: 15rem;
 }
@@ -27,9 +31,7 @@
   width: 100%;
 } */
 
-
-
-@media screen and (min-width:640px) and (max-width:1020px){
+@media screen and (min-width: 640px) and (max-width: 1020px) {
   .cardClass {
     display: flex;
     justify-content: space-between;
@@ -37,8 +39,8 @@
     width: 50rem;
     margin: 6rem auto;
   }
-  .order h2{
-    margin-left: 6rem;
+  .order h2 {
+    margin-left: 1rem;
   }
   .right {
     display: flex;
@@ -47,26 +49,27 @@
     align-items: center;
     margin: 0;
   }
-  .right h2{
+  .right h2 {
     margin-left: 0;
   }
-  .action{
+  .action {
     margin-top: -2rem;
   }
-  
-  
+  .backBtn {
+    margin: 2rem 1rem;
+  }
 }
 
 @media screen and (max-width: 640px) {
-
   .order {
     width: 90%;
     text-align: center;
     height: 80%;
     max-height: 45rem;
   }
-  .order h2{
+  .order h2 {
     font-size: 1.2rem;
+    margin-left: 1rem;
   }
   .cardClass {
     width: 100%;
@@ -75,7 +78,10 @@
     height: 100%;
     padding: 5rem 0;
   }
-  .image{
+  .image {
     padding: 2rem;
+  }
+  .backBtn {
+    margin: 2rem 0rem;
   }
 }

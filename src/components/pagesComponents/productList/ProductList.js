@@ -51,37 +51,38 @@ const ProductList = (props) => {
 
   return (
     <div>
-      {products.length > 0?(
+      {products.length > 0 ? (
         <>
-        <div className={classes.top}>
-        <div className={classes.search}>
-          <Search
-            value={search}
-            onChange={searchChangeHandler}
-            placeholder={"Search products, brands and categories"}
-          />
-        </div>
-        <div>
-          <button
-            className={classes.filterToggle}
-            onClick={props.filterToggleHandler}>
-            &#9776;
-          </button>
-        </div>
-        <div className={classes.sort}>
-          <label htmlFor="">Sort:</label>
-          <select name="" value={sort} onChange={sortChangeHandler}>
-            <option value="Latest">Latest</option>
-            <option value="Highest Price">Highest Price</option>
-            <option value="Lowest Price">Lowest Price</option>
-          </select>
-        </div>
-      </div>
+          <div className={classes.top}>
+            <div className={classes.search}>
+              <Search
+                value={search}
+                onChange={searchChangeHandler}
+                placeholder={"Search products, brands and categories"}
+              />
+            </div>
+            <div>
+              <button
+                className={classes.filterToggle}
+                onClick={props.filterToggleHandler}>
+                &#9776;
+              </button>
+            </div>
+            <div className={classes.sort}>
+              <label htmlFor="">Sort:</label>
+              <select name="" value={sort} onChange={sortChangeHandler}>
+                <option value="Latest">Latest</option>
+                <option value="Highest Price">Highest Price</option>
+                <option value="Lowest Price">Lowest Price</option>
+              </select>
+            </div>
+          </div>
 
-      <ProductItem products={products} />  
-      
-      </>
-      ):""}
+          <ProductItem products={products} />
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

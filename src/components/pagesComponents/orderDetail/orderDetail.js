@@ -1,5 +1,5 @@
 import classes from "./orderDetail.module.css";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Fragment, useEffect, useState } from "react";
 import { db } from "../../../firebase/Config";
 import { doc, getDoc } from "firebase/firestore";
@@ -43,25 +43,25 @@ const OrderDetail = () => {
     }
   };
 
-   
-  const shortenText = (text,n)=>{
-    if(text.length > n){
-     const shortenedText = text.substring(0,n).concat("...");
-      return  shortenedText
-    };
-    return text
-  }
-
+  const shortenText = (text, n) => {
+    if (text.length > n) {
+      const shortenedText = text.substring(0, n).concat("...");
+      return shortenedText;
+    }
+    return text;
+  };
 
   return (
-    <div className={classes.order} >
-
+    <div className={classes.order}>
       {/* <h2>Order Detail</h2> */}
-      {isLoading && <p style={{marginLeft:"6rem"}}>Fetching Order...</p>}
+      {isLoading && <p style={{ marginLeft: "6rem" }}>Fetching Order...</p>}
       {order === "" ? (
-        <p style={{marginLeft:"6rem"}}>No Order Yet...</p>
+        <p style={{ marginLeft: "6rem" }}>No Order Yet...</p>
       ) : (
         <Fragment>
+          <Link to={"/"}>
+            <Button className={classes.backBtn}> &larr; Back to Orders</Button>
+          </Link>
           <h2> Order ID: {order.id}</h2>
           {order.cartItems.map((item) => {
             const { name, imageUrl, quantity, price, id } = item;
