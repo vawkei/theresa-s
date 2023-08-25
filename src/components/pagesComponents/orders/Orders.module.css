@@ -1,4 +1,8 @@
 
+.btn{
+    margin: 2rem 0rem;
+    width: 12rem;
+}
 .table{
     padding: 1rem;
     margin-top: 5rem;
@@ -52,6 +56,9 @@ table tr:hover{
     }
     .lead{
         margin-left: 0rem;
+    }
+    .btn{
+        margin: 2rem 0rem;
     }   
 }
 
@@ -64,9 +71,12 @@ table tr:hover{
         max-width: 40rem;
     }
     .table h2{
-        margin-left: 1rem;
+        margin-left: 2rem;
     }
     .lead{
-        margin-left: 0;
+        margin-left: 1rem;
+    }
+    .btn{
+        margin: 2rem 2rem;
     }
 }

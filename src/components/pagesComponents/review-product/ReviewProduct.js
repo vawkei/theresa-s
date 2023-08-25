@@ -9,7 +9,6 @@ import Button from "../../ui/button/Button";
 import { useSelector } from "react-redux";
 import Notifier from "../../ui/notifier/Notifier";
 
-
 const ReviewProduct = () => {
   const [product, setProduct] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -19,27 +18,25 @@ const ReviewProduct = () => {
 
   const userID = useSelector((state) => state.auth.userID);
   const userName = useSelector((state) => state.auth.userName);
-  const [notifier,setNotifier] = useState("");
-
+  const [notifier, setNotifier] = useState("");
 
   useEffect(() => {
     getSingleProduct();
   }, []);
 
-let timeDuration = 5000;
-let notifierClearer;
+  let timeDuration = 5000;
+  let notifierClearer;
 
-  useEffect(()=>{
-    if(notifier){
-      notifierClearer = setInterval(function(){
+  useEffect(() => {
+    if (notifier) {
+      notifierClearer = setInterval(function () {
         setNotifier("");
-      },timeDuration)
+      }, timeDuration);
     }
-    return ()=>{
-      clearInterval(notifierClearer)
-    }
-  },[notifier]);
-
+    return () => {
+      clearInterval(notifierClearer);
+    };
+  }, [notifier]);
 
   const getSingleProduct = async () => {
     setIsLoading(true);
@@ -93,8 +90,8 @@ let notifierClearer;
       setReview("");
       setIsLoading(false);
       setNotifier({
-        title:"Success",
-        message:"Review sent..."
+        title: "Success",
+        message: "Review sent...",
       });
     } catch (error) {
       console.log(error);
@@ -103,7 +100,9 @@ let notifierClearer;
 
   return (
     <div className={classes.review}>
-      {notifier && <Notifier title={notifier.title} message={notifier.message} />}
+      {notifier && (
+        <Notifier title={notifier.title} message={notifier.message} />
+      )}
       {isLoading ? (
         <p>Loading...</p>
       ) : (
@@ -122,10 +121,13 @@ let notifierClearer;
               <div className={classes.right}>
                 <h4>{product.name}</h4>
                 <p>Rating:</p>
-                <StarsRating
-                  value={rate}
-                  onChange={(rate) => setRating(rate)}
-                />
+                <div className={classes.ratingContainer}>
+                  <StarsRating                    
+                    value={rate}
+                    onChange={(rate) => setRating(rate)}
+                  />
+                </div>
+
                 <label htmlFor="">Review</label>
                 <textarea
                   rows="5"
