@@ -20,7 +20,6 @@ import StarsRating from "react-star-rate";
 const ProductDetail = () => {
   const { id } = useParams();
   //  console.log(id);
-  
 
   const [isLoading, setIsLoading] = useState(false);
   const [product, setProduct] = useState("");
@@ -113,7 +112,7 @@ const ProductDetail = () => {
       className={classes.detail}
       style={{ width: "100%", maxWidth: "60rem", margin: "10rem auto" }}>
       <h2>Product detail</h2>
-      {isLoading && <p style={{marginLeft:"3rem"}}>Loading...</p>}
+      {isLoading && <p style={{ marginLeft: "3rem" }}>Loading...</p>}
       <Link to={"/shop-now"}>
         <Button className={classes.btn}> &larr; Back to Products</Button>
       </Link>
@@ -125,8 +124,18 @@ const ProductDetail = () => {
           </div>
 
           <div className={classes.otherImages}>
-            <img src={product.imageUrl_2} style={{ width: "10rem" }}alt={product.name} />
-            <img src={product.imageUrl_3} style={{ width: "10rem" }} alt={product.name} />
+             {/* <img src={product.imageUrl_2} style={{ width: "10rem" }}alt={product.name} /> 
+             <img src={product.imageUrl_3} style={{ width: "10rem" }} alt={product.name} />  */}
+            <img
+              src={!product.imageUrl_2 ? "" : product.imageUrl_2}
+              style={{ width: "10rem" }}
+              // alt={product.name}
+            />
+            <img
+              src={!product.imageUrl_3 ? "" : product.imageUrl_3}
+              style={{ width: "10rem" }}
+              // alt={product.name}
+            />
           </div>
 
           <div className={classes.review}>

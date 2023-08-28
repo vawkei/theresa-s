@@ -106,7 +106,7 @@ Somethings to work on that I noticed on my phone:
 
 3. Pagination buttons need to be spaced.{FIXED}
 
-4. Review Product page, the starsrating, the starts should all be on the same line. noticed four stars were up and one was down. would have to shrink the size of the stars.{FIXED}
+4. Review Product page, the starsrating, the starts should all be on the same line. noticed four stars were up and one was down. would have to shrink the size of the stars.{FIXED:GAVE THE CONTAINER A WIDTH OF 110PX}
 
 5. Review Products page the submit button under the review box isn't properly set.{FIXED}
 
