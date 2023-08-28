@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import classes from "./ShopNow.module.css";
 import ProductFilter from "../productFilter/ProductFilter";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
@@ -62,15 +62,12 @@ const ShopNow = () => {
   return (
     <div>
       {isLoading ? (
-        <p style={{marginLeft:"5rem"}}>Fetching Products...</p>
+        <p style={{ marginLeft: "5rem" }}>Fetching Products...</p>
       ) : (
         <div className={classes.shop}>
-            
-            <div
-              className={toggleState ? classes.backdrop : ""}
-              onClick={filterToggleHandler}></div>
-        
-
+          <div
+            className={toggleState ? classes.backdrop : ""}
+            onClick={filterToggleHandler}></div>
 
           <aside
             className={

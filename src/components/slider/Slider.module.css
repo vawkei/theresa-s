@@ -144,4 +144,16 @@
   .btn {
     width: 12rem;
   }
+  .prev {
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    color: orange;
+  }
+  .next {
+    position: absolute;
+    top: 4rem;
+    right: 0;
+    color: green;
+  }       
 }

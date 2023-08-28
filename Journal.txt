@@ -80,7 +80,7 @@ Was having some wierd issue. I have not experienced any issue like it before des
 
 >Didnt make the Admin section Mobile responsive
 
->Didnt make the uaser Orders table Mobile responsive
+>Didnt make the user Orders table Mobile responsive
 
 >Then didnt really test the Paystack Live payment pay with bank feature, because they only had two banks compatible: kuda and gtb.
 
@@ -97,3 +97,19 @@ side suggestions:
 3.Generate invoice
 4.How many times a product has been viewed
 
+
+Post Deployment:
+Somethings to work on that I noticed on my phone:
+1. Toggle button in the home page needs a z-index to make it scroll underneath the header and not on the header.{FIXED: I SET THE Z-INDEX THAT WAS THERE B4 TO z-index: 200}
+
+2. The orderDetail page has a problem. if there are two or more orders then the footer will interfer with one of the picture. it seems to be a positioning issue.{FIXED: MAX-WIDTH WAS SET IN THE PARENT CONTAINER.}
+
+3. Pagination buttons need to be spaced.{FIXED}
+
+4. Review Product page, the starsrating, the starts should all be on the same line. noticed four stars were up and one was down. would have to shrink the size of the stars.{FIXED}
+
+5. Review Products page the submit button under the review box isn't properly set.{FIXED}
+
+6. The home page, the arrows to move from picture to picture, the one on the right isn't .{it seemed ok on my laptop's. So i left it as it is.}
+
+7. The loading gif in register page needs to be central.{FIXED}

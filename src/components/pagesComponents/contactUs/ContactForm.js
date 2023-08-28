@@ -33,6 +33,9 @@ const ContactForm = () => {
     }
   },[notifier])
 
+  
+
+
 
   const firstNameInputRef = useRef();
   const subjectInputRef = useRef();
@@ -118,7 +121,7 @@ const ContactForm = () => {
             className={`${classes.control} ${
               formValidity.firstName ? "" : classes.invalid
             }`}>
-            <label>First name</label>
+            <label>Name</label>
             <input
               placeholder="Enter your full name here"
               type={"text"}
@@ -256,3 +259,14 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+
+
+
+
+
+
+
+
+
+
+
