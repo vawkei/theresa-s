@@ -104,7 +104,7 @@ const ReviewProduct = () => {
         <Notifier title={notifier.title} message={notifier.message} />
       )}
       {isLoading ? (
-        <p>Loading...</p>
+        <p style={{ marginLeft: "6rem"}}>Loading...</p>
       ) : (
         <Fragment>
           <h1>Review Product</h1>

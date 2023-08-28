@@ -14,3 +14,24 @@
     background-color: transparent;
     z-index: 20;
 }
+
+
+@media screen and (min-width:640px) and (max-width:1020px){
+    .background .image {
+        top: 35%;
+        left: 40%;
+    }
+    .image img{
+        width: 15rem;
+    }    
+}
+
+@media screen and (max-width:640px){
+   .background .image {
+        top: 50%;
+        left: 35%;
+    }
+    .image img{
+        width: 7rem;
+    }
+}

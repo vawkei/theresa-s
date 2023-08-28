@@ -59,7 +59,7 @@ const OrderDetail = () => {
         <p style={{ marginLeft: "6rem" }}>No Order Yet...</p>
       ) : (
         <Fragment>
-          <Link to={"/"}>
+          <Link to={"/orders"}>
             <Button className={classes.backBtn}> &larr; Back to Orders</Button>
           </Link>
           <h2> Order ID: {order.id}</h2>

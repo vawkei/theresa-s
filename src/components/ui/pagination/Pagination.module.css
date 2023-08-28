@@ -27,3 +27,18 @@
 .hidden{
     display: none;
 }
+
+@media  screen and (max-width:640px){
+    .pagination ul{
+        display: flex;
+        padding: 1rem;
+        list-style: none;
+        gap: 0.5rem;
+    }
+    .pagination button{
+        background-color: black;
+        color: white;
+        padding: 0.1rem 0.25rem;
+        border-radius: 6px;
+    }
+}

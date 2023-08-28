@@ -1,6 +1,6 @@
 .modal{
     background-color: white;
-    z-index: 300;
+    z-index: 900;
     width: 20rem;
     position: fixed;
     top: 10%;
@@ -24,8 +24,8 @@ padding: 1rem;
 @media screen and (max-width:640px){
     .modal{
         background-color: white;
-        z-index: 300;
-        width: 10rem;
+        z-index: 900;
+        width: 30rem;
         position: fixed;
         top: 10%;
         left: 0;
@@ -36,6 +36,6 @@ padding: 1rem;
     }
     @keyframes slideAcross {
         from{transform: translateX(-200px)}
-        to{transform: translateX(1800px);}
+        to{transform: translateX(2800px);}
     }   
 }
