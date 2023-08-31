@@ -47,13 +47,15 @@ const Pagination = (props) => {
   //the next button functionality:
   const nextButtonHandler = () => {
     props.setCurrentPage(props.currentPage + 1);
+    window.scrollTo(0, 0);
     if (props.currentPage +1 > maxPageNumberLimit) {
       setMaxPagNumberLimit(maxPageNumberLimit + pageNumberLimit);
-      setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit);
+      setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit);     
     }
   };
   //the prev button functionality:
   const prevButtonHandler = () => {
+    window.scrollTo(0, 0);
     props.setCurrentPage(props.currentPage - 1);
     if ((props.currentPage - 1) % pageNumberLimit === 0) {
       setMaxPagNumberLimit(maxPageNumberLimit - pageNumberLimit);
