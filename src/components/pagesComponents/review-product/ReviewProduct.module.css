@@ -85,6 +85,7 @@ textarea {
 @media screen and (min-width: 360px) and (max-width: 640px) {
   .review {
     width: 100%;
+    /* margin-top: 0; */
   }
 
   .cardClass {
@@ -93,7 +94,7 @@ textarea {
     width: 100%;
     margin-top: -10rem;
     height: 100%;
-    max-height: 46rem;
+    max-height: 50rem;
     gap: 0rem;
   }
   .image {
@@ -111,8 +112,12 @@ textarea {
     margin-top: -1rem;
   }
   .right h4 {
-    padding-bottom: 1rem;
+    /* padding-bottom: 1rem; */
+    margin-top: 2rem;
     width: 100%;
+  }
+  .right p{
+
   }
   .ratingContainer {
     width: 100%;
@@ -142,7 +147,7 @@ textarea {
     width: 100%;
     margin-top: -10rem;
     height: 100%;
-    max-height: 46rem;
+    max-height: 50rem;
     gap: 0rem;
   }
   .image {
@@ -160,7 +165,8 @@ textarea {
     margin-top: 1rem;
   }
   .right h4 {
-    padding-bottom: 1rem;
+    /* padding-bottom: 1rem; */
+    margin-top: 1rem;
     width: 100%;
   }
   .ratingContainer {

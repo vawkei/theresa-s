@@ -34,7 +34,19 @@ const Slider = () => {
     };
   }, [currentSlide, slideInterval]);
 
+
+  const shortenText = (text, n) => {
+    if (text.length > 60) {
+      const shortenedText = text.substring(0, 60).concat("...");
+      return shortenedText;
+    }
+    return text;
+  };
+
+
+
   return (
+    
     <div className={classes.slider}>
       <AiOutlineArrowLeft
         size={35}
@@ -55,9 +67,9 @@ const Slider = () => {
             {index === currentSlide && (
               <div className={classes.slideFirstDiv}>
                 <img src={slide.image} />
-                <div>
+                <div className={classes.content}> 
                   <h1>{slide.heading}</h1>
-                  <p>{slide.desc}</p>
+                  <p>{shortenText  (slide.desc,60) }</p>
                   <div className={classes.btnContainer}>
                     <a href="/shop-now">
                       <Button className={classes.btn}>Shop Now</Button>

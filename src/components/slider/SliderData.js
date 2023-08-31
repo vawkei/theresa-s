@@ -12,7 +12,7 @@ export const SliderData = [
     },
     {
         heading: "All Star Converse",
-        image:  'https://i.ibb.co/QmvwKQW/p24-2.png',
+        image:  'https://i.ibb.co/nCNXyLh/P24-3-1.png',
         // image:  'https://i.ibb.co/7vX80gT/Ladies-Hand-Bag.jpg',
         desc: 'A fashionable canvas for both boys and girls, suitable for all occasions'
     },
@@ -23,7 +23,7 @@ export const SliderData = [
     },
     {
         heading: 'Oculus Quest 2',
-        image: 'https://i.ibb.co/mTy56dj/Oculus-Quest-2-Virtual-Reality.jpg',
+        image: 'https://i.ibb.co/NtkjCMB/p21.jpg',
         desc: 'Oculus Quest is a virtual Reality headset developed by Oculus. It is a device that can run games and software wirelessly under an Android based opating system.'
     },
     {
