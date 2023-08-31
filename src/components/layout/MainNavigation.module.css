@@ -74,15 +74,40 @@ a:hover {
   color: red;
 }
 
-@media screen and (min-width:640px) and (max-width:1024px){
 
+/* MEDIA QUERY 
+FOR TABLETS AND PHONES TURNED DIAGONALLY/LANDSCAPE{LARGE PHONES}. PHONES LIKE: iphoneXR, iphone12PRO, pixel5, samsung galaxy S20 */
+@media screen and (min-width:810px) and (max-width:1024px){
+  .header{
+    margin-left: -3rem;
+  }
   .header li a {
-    font-size: 1rem;
+    font-size: 1.2rem;
+  }
+  .shop-now{
+    width: 9rem;
   }
   
 }
-
-
+/* MEDIA QUERY 
+FOR TABLETS  BUT NONE FIT INTO THIS CAREGORY INSTEAD ITS FOR SOME GROUP OF PHONES TURNED DIAGONALLY/LANDSCAPE. PHONES LIKE: iphoneSE and Samsung galaxy S8+*/
+@media screen and (min-width:640px) and (max-width:810px){
+  .header{
+    margin-left: -3rem;
+  }
+  .logo{
+    font-size: 0.7rem;
+  }
+  .header li a {
+    font-size: 1rem; 
+  }
+  .shop-now{
+    width: 8rem;
+  }
+  
+}
+/* MEDIA QUERY 
+FOR EVERY PHONE BELOW 640PX WHEN STANDING STRAIGHT/PORTRAIT/VERTICAL AND NOT DIAGONALLY*/
 @media screen and (max-width: 640px) {
 .logo{
   font-size: 0.7rem;

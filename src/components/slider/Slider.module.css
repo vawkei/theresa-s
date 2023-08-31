@@ -1,8 +1,10 @@
 .slider {
   position: relative;
   width: 100%;
-  height: 90vh;
+  height: 40vh;
+  margin-top: 3rem;
 }
+
 .slide {
   width: 100%;
   height: 100%;
@@ -12,6 +14,8 @@
   transition: all 0.5s ease;
   transform: translateX(10%);
 }
+
+
 .slide > div {
   display: flex;
   align-items: center;
@@ -22,7 +26,8 @@
 }
 
 .slide img {
-  width: 65%;
+  width: 45%;
+  /* width: 65%; */
 }
 
 
@@ -48,24 +53,31 @@
 }
 .prev {
   position: absolute;
-  top: 4rem;
+  top: 10rem;
   left: 0;
   color: orange;
 }
 .next {
   position: absolute;
-  top: 4rem;
+  top: 10rem;
   right: 0;
   color: green;
 }
 
 /* MEDIA QUERY FOR TABLETS  */
 @media screen and (min-width:640px) and (max-width:1024px){
+  .slider {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    margin-top: 3rem;
+  }
+  
   .slide {
    width: 90%;
    height: 100%;
    position: absolute;
-   top: 0;
+   top: 1rem;
    left: 0;
    transition: all 0.5s ease;
    transform: translateX(10%);
@@ -82,22 +94,29 @@
    right: 0;
    color: green;
  }
- .slide img {
-   width: 80%;
- }
  .slideFirstDiv {
    display: flex;
-   flex-direction: column;
- }
- .slideFirstDiv {
+   /* flex-direction: column; */
+   width: 100%;
    text-align: center;
  }
+ .slide img {
+  width: 60%;
+}
  .slideFirstDiv p {
    text-align: left;
-   inline-size: 450px;
-   /* inline-size: 250px; */
+   /* inline-size: 450px; */
+   inline-size: 250px;
    font-size: 1.5rem;
- } 
+   width: 40%;
+ }
+ .btnContainer{
+  display: flex;
+  justify-content: flex-start;
+}
+.btn {
+  width: 12rem;
+} 
  }
 
 
@@ -105,13 +124,15 @@
   .slider {
     position: relative;
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
+    height: 80vh;
+    margin-top: -7rem;
   }
   .slide {
     width: 100%;
     height: 100%;
     position: absolute;
-    top: 0;
+    top: 10rem;
     left: 0;
     transition: all 0.5s ease;
     transform: translateX(5%);
@@ -131,12 +152,12 @@
     inline-size: 250px;
     font-size: 1.5rem;
   }
-  .next {
+  /* .next {
     position: absolute;
-    top: 4rem;
+    top: 15rem;
     right: 2rem;
     color: green;
-  }
+  } */
   .btnContainer{
     display: flex;
     justify-content: start;
@@ -146,13 +167,13 @@
   }
   .prev {
     position: absolute;
-    top: 4rem;
+    top: 20rem;
     left: 0;
     color: orange;
   }
   .next {
     position: absolute;
-    top: 4rem;
+    top: 20rem;
     right: 0;
     color: green;
   }       

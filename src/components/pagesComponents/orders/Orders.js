@@ -75,7 +75,7 @@ const OrdersHistory = () => {
         <>
           {/* {orders.length === 0 ? ( */}
           {filteredOrders.length === 0 ? (
-            <p>You have no Orders</p>
+            <p style={{ marginLeft: "6rem" }}>You have no Orders</p>
           ) : (
             <Fragment>
               <div className={classes.lead}>

@@ -36,7 +36,7 @@ const MainFooter = () => {
   const dateInFull = `${months[month]}, ${year}`;
   console.log(dateInFull);
   return (
-    <div className={classes.footer}>
+    <div className={`${classes.footer} ${classes.container} `}>
       <h2 onClick={navigateHandler}>{`<HowZ /> ${dateInFull}`}</h2>
     </div>
   );
